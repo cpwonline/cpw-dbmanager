@@ -25,9 +25,14 @@
 #include "cpw_dbmanager.h"
 
 
-CPWDBManager::CPWDBManager()
+CPWDBManager::CPWDBManager(char* type_database)
 {
-	
+	connection_general_ = new Connection(type_database);
+}
+
+CPWDBManager::~CPWDBManager()
+{
+	delete connection_general_;
 }
 
 

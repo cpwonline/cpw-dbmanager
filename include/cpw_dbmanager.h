@@ -22,16 +22,26 @@
  */
 
 
-#ifndef CPW_DBMANAGER_H
-#define CPW_DBMANAGER_H
+#include <cstdlib>
+#include <cstring>
 
-class CPWDBManager
+#include <iostream>
+
+#include "connection.h"
+#include "database.h"
+
+#ifndef CPW_DBMANAGER_H_
+#define CPW_DBMANAGER_H_
+
+class CPWDBManager : pubic Connection
 {
 	public:
-		CPWDBManager();
-			
+		CPWDBManager(char* type_database);
+		~CPWDBManager();
+		void PrepareConnection_(char* query_sql);
+		
 	private:
-		/* add your private declarations */
+		Connection connection_general_;
 };
 
-#endif /* CPW_DBMANAGER_H */ 
+#endif /* CPW_DBMANAGER_H_ */ 
