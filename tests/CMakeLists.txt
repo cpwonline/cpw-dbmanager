@@ -1,0 +1,1 @@
+add_executable(test_gen test_gen.cc)
