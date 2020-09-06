@@ -9,4 +9,4 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 set(HEADER ${CMAKE_SOURCE_DIR}/include)
 include_directories(include)
-add_subdirectory(src)
+add_subdirectory(src tests)
