@@ -27,14 +27,17 @@ void TestGen::TearDown()
 
 TEST_F(TestGen, Add)
 {
+	std::cout << "\n---";
     ASSERT_EQ(1, 1);
     TestObj_->PrepareConnection_("name_database");
-    if(!TestObj_->get_status_connection())
+    if(TestObj_->connection_general_->connected_to_database_)
     {
-		std::cout << "error";
+		TestObj_->generic_handler_->PrepareDatabase_();
+		TestObj_->RunQuery_();
 	}
-	TestObj_->set_query_sql("SELECT * FROM coursos");
-	TestObj_->RunQuery_();
+	else
+		std::cout << "\nError";
+	std::cout << "\n---";
 }
 
 //-----------------------------------------------------------------------------
