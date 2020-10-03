@@ -22,12 +22,25 @@
  */
 
 
-#include "mysql.h"
+#include "mysql_handler.h"
 
 
-MySQL::MySQL()
+MySQLHandler::MySQLHandler()
 {
 	
 }
 
+MySQLHandler::~MySQLHandler()
+{
+	
+}
 
+bool MySQLHandler::PrepareDatabase_()
+{
+	return true;
+}
+
+void  MySQLHandler::RunQuery_()
+{
+	
+}

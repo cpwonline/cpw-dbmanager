@@ -28,8 +28,9 @@
 class HandleDatabase
 {
 	public:
+		HandleDatabase();
+		virtual ~HandleDatabase();
 		virtual bool PrepareDatabase_() = 0;
-		virtual void PrepareQuery_() = 0;
 		virtual void RunQuery_() = 0;
 			
 	protected:

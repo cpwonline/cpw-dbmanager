@@ -22,16 +22,23 @@
  */
 
 
-#ifndef MYSQL_H
-#define MYSQL_H
+ #include <mysql.h>
+ 
+ #include <cstring>
+ #include <cstdlib>
+ 
+ #include "handle_database.h"
 
-class MySQL
+#ifndef MYSQL_HANDLER_H
+#define MYSQL_HANDLER_H
+
+class MySQLHandler : public HandleDatabase
 {
 	public:
-		MySQL();
-			
-	private:
-		/* add your private declarations */
+		MySQLHandler();
+		virtual ~MySQLHandler();
+		virtual bool PrepareDatabase_();
+		virtual void RunQuery_();
 };
 
-#endif /* MYSQL_H */ 
+#endif /* MYSQL_HANDLER_H */ 

@@ -30,4 +30,7 @@ HandleDatabase::HandleDatabase()
 	
 }
 
-
+HandleDatabase::~HandleDatabase()
+{
+	
+}

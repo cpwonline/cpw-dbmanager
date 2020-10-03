@@ -36,12 +36,12 @@ class SQLite3Handler : public HandleDatabase
 {
 	public:
 		SQLite3Handler();
+		virtual ~SQLite3Handler();
 		virtual bool PrepareDatabase_();
-		virtual void PrepareQuery_();
 		virtual void RunQuery_();
 			
 	private:
-		sqlite3* sqlite_object_;
+		sqlite3* sqlite3_object_;
 };
 
 #endif /* SQLITE3_HANDLER_H_ */ 

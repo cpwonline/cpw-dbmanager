@@ -29,21 +29,26 @@ SQLite3Handler::SQLite3Handler()
 {
 	
 }
+
+SQLite3Handler::~SQLite3Handler()
+{
+	
+}
+
 bool SQLite3Handler::PrepareDatabase_()
 {
 	error_result_ = 0;
 
 	// Open database
-		response_result_ = sqlite3_open(name_database_,& sqlite_object_);
-		if (response_result_)
-		{
-			std::strcpy(stderr, "\n   |--Error: Error to open database: %s.", sqlite3_errmsg(systemDB.conGen.objSQLite));
-			exit(0);
-		}
-		else
-		{
-			fprintf(stdout, "\n   |--Result: Database OK.");
-		}
+	response_result_ = sqlite3_open(name_database_,& sqlite_object_);
+	if (response_result_)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
 }
 
 void SQLite3Handler::RunQuery_()
