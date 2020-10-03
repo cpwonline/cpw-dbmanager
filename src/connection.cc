@@ -24,20 +24,39 @@
 
 #include "connection.h"
 
-
-Connection::Connection(char* type_database)
+Connection::Connection()
 {
-	if(std::strcmp(type_database, "sqlite3"))
-		generic_database_ = new SQLite3();
-	else if(std::strcmp(type_database, "mysql"))
-		generic_database_ = new MySQL();
-		
-	* generic_handler_ = & generic_database_;
+	status_ = "Not connected";
 }
 
 Connection::~Connection()
 {
-	delete generic_database_;
+	
 }
 
+bool Connection::Init_()
+{
+	if(type_database == "sqlite3"))
+	{
+		generic_database_ = new SQLite3Handler();
+		status_ = "Connection init.";
+		return true;
+	}
+	else if(type_database == "mysql"))
+	{
+		generic_database_ = new MySQLHandler();
+		status_ = "Connection init."
+		return true;
+	}
+	else
+	{
+		status_ = "Connection failed.";
+		return false;
+	}
+}
 
+void Connection::End_()
+{
+	status_ = "Connection closed.";
+	delete generic_database_;
+}

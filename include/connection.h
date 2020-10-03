@@ -21,29 +21,39 @@
  * 
  */
 
-#include "handle_database.h"
-#include "sqlite3_handler.h"
-#include "mysql_handler.h"
 
 #ifndef CONNECTION_H_
 #define CONNECTION_H_
 
-template <class DBObject>
 class Connection
 {
 	public:
-		Connection(char* type_database);
+		Connection();
 		~Connection();
 		
-	protected:
+		string get_type() const;
+		string get_status() const;
+		string get_name_database() const;
+		string get_port_connection() const;
+		string get_user() const;
+		string get_password() const;
+		void set_type(string type);
+		void set_status(string status);
+		void set_name_database(string name_database);
+		void set_port_connection(string port_connection);
+		void set_user(string user);
+		void set_password(string password);
+		
+		void ReceiveData_();
 		bool Init_();
 		bool End_();
 		bool Restart_();
-		char* type_, status_;
-			
+		
+		bool connected_to_database_;
+		
 	private:
-		DBObject generic_database_;
-		HandleDatabase generic_handler_;
+		HandleDatabase* generic_database_;
+		string type_, status_, name_database_, port_connection_, user_, password_;
 };
 
 #endif /* CONNECTION_H_ */ 
