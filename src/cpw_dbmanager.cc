@@ -25,14 +25,37 @@
 #include "cpw_dbmanager.h"
 
 
-CPWDBManager::CPWDBManager(char* type_database)
+CPWDBManager::CPWDBManager()
 {
-	connection_general_ = new Connection(type_database);
+	
 }
 
-CPWDBManager::~CPWDBManager()
+void CPWDBManager::NewConnection_(string type_connection, string name_database, string port_connection, string user, string password)
 {
-	delete connection_general_;
+	
 }
 
+void CPWDBManager::DeleteConnection_(int number_connection)
+{
+	
+}
 
+void CPWDBManager::DeleteLastConnection_()
+{
+	
+}
+
+Connection* CPWDBManager::ViewConnection_(int number_connection)
+{
+	
+}
+
+bool CPWDBManager::ConnectionEmpty_()
+{
+	
+}
+
+int CPWDBManager::TotalConnections_()
+{
+	
+}
