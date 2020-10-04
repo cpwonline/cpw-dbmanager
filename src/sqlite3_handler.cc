@@ -40,7 +40,7 @@ bool SQLite3Handler::PrepareDatabase_()
 	error_result_ = 0;
 
 	// Open database
-	response_result_ = sqlite3_open(name_database_,& sqlite_object_);
+	//response_result_ = sqlite3_open(name_database_,& sqlite_object_);
 	if (response_result_)
 	{
 		return false;
@@ -53,13 +53,13 @@ bool SQLite3Handler::PrepareDatabase_()
 
 void SQLite3Handler::RunQuery_()
 {
-	response_result_ = sqlite3_exec(sqlite_object_, query_sql_, NULL, 0,& error_result_);
+	//response_result_ = sqlite3_exec(sqlite_object_, query_sql_, NULL, 0,& error_result_);
 	if (response_result_ != SQLITE_OK)
 	{
-		fprintf(stderr, "\n   |--Error: %s", error_result_);
-		sqlite3_free(error_result_);
+		//fprintf(stderr, "\n   |--Error: %s", error_result_);
+		//sqlite3_free(error_result_);
 	}
-	else
-		fprintf(stdout, "\n   |--Result: Database and tables OK.");
+	//else
+		//fprintf(stdout, "\n   |--Result: Database and tables OK.");
 
 }

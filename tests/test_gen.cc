@@ -15,7 +15,7 @@ class TestGen : public ::testing::Test
 
 void TestGen::SetUp()
 {
-    TestObj_ = new CPWDBManager("sqlite3");
+    TestObj_ = new CPWDBManager();
 }
 
 void TestGen::TearDown()
@@ -29,14 +29,12 @@ TEST_F(TestGen, Add)
 {
 	std::cout << "\n---";
     ASSERT_EQ(1, 1);
-    TestObj_->PrepareConnection_("name_database");
-    if(TestObj_->connection_general_->connected_to_database_)
-    {
-		TestObj_->generic_handler_->PrepareDatabase_();
-		TestObj_->RunQuery_();
-	}
-	else
-		std::cout << "\nError";
+    
+    TestObj_->NewConnection_("sqlite3" );
+    TestObj_->ServerConfigs_("127.0.0.1", "3306");
+    TestObj_->DatabaseConfigs_("test1", "root", "j0f1r2c3=1999");
+    TestObj_->ShowConnections_();
+    
 	std::cout << "\n---";
 }
 
