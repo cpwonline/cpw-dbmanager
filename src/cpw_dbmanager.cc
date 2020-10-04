@@ -80,6 +80,7 @@ void CPWDBManager::ShowConnections_()
 	{
 		auto h = connections_handler_->at(a);
 		std::cout << "\n" << c++ << ". " << h->get_name_database() << ", " << h->get_status();
+		std::cout << "(" << h->get_server_address() << ":" << h->get_port_connection() << ")";
 	}
 }
 
