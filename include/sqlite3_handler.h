@@ -37,8 +37,8 @@ class SQLite3Handler : public HandleDatabase
 	public:
 		SQLite3Handler();
 		virtual ~SQLite3Handler();
-		virtual bool PrepareDatabase_();
-		virtual void RunQuery_();
+		virtual bool PrepareDatabase_() override;
+		virtual void RunQuery_() override;
 			
 	private:
 		sqlite3* sqlite3_object_;

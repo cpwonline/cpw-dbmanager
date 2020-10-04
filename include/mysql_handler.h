@@ -37,8 +37,8 @@ class MySQLHandler : public HandleDatabase
 	public:
 		MySQLHandler();
 		virtual ~MySQLHandler();
-		virtual bool PrepareDatabase_();
-		virtual void RunQuery_();
+		virtual bool PrepareDatabase_() override;
+		virtual void RunQuery_() override;
 };
 
 #endif /* MYSQL_HANDLER_H */ 
