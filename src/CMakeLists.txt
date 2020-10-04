@@ -26,7 +26,7 @@ set(
 
 include(FindPkgConfig)
 find_package(PkgConfig REQUIRED)
-pkg_search_module(DATABASE REQUIRED libmariadb libmysqlclient)
+pkg_search_module(DATABASE REQUIRED libmysqlclient libmariadb)
 pkg_search_module(SQLITE3 REQUIRED sqlite3)
 
 include_directories(${DATABASE_INCLUDE_DIRS} ${SQLITE3_INCLUDE_DIRS})
@@ -36,8 +36,9 @@ add_library(connection SHARED ${connection_src})
 add_library(handle_database SHARED ${handle_database_src})
 add_library(mysql_handler SHARED ${mysql_handler_src})
 add_library(sqlite3_handler SHARED ${sqlite3_handler_src})
-add_library("cpw-dbmanager" SHARED ${cpw_dbmanager_src})
+add_library(${PROJECT_NAME} SHARED ${cpw_dbmanager_src})
 
-target_link_libraries("cpw-dbmanager" PUBLIC ${connection} ${handle_database})
-target_link_libraries(connection ${handle_database} ${mysql_handler} ${sqlite3_handler})
-target_link_libraries(sqlite3_handler PUBLIC ${SQLITE3_LIBRARIES})
+target_link_libraries(mysql_handler PUBLIC ${DATABASE_LIBRARIES} ${handle_database})
+target_link_libraries(sqlite3_handler PUBLIC ${SQLITE3_LIBRARIES} ${handle_database})
+target_link_libraries(connection PUBLIC ${handle_database} ${mysql_handler} ${sqlite3_handler})
+target_link_libraries(${PROJECT_NAME} PUBLIC ${connection})

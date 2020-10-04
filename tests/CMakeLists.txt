@@ -7,3 +7,5 @@ link_directories(GTEST_LIBRARY_DIRS)
 add_executable(test_gen test_gen.cc)
 
 target_link_libraries(test_gen ${GTEST_LIBRARIES} "cpw-dbmanager")
+include_directories(${DATABASE_INCLUDE_DIRS} ${SQLITE3_INCLUDE_DIRS})
+link_directories(${DATABASE_LIBRARY_DIRS} ${SQLITE3_LIBRARY_DIRS})
