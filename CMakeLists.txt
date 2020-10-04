@@ -10,10 +10,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(HEADER ${CMAKE_SOURCE_DIR}/include)
 include_directories(include)
 add_subdirectory(src)
+add_subdirectory(tests)
 
 target_include_directories(
 	${PROJECT_NAME} PUBLIC
 	"${PROJECT_BINARY_DIR}"
 )
-
-add_subdirectory(tests)
