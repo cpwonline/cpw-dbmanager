@@ -70,14 +70,16 @@ void CPWDBManager::DeleteLastConnection_()
 Connection* CPWDBManager::ViewConnection_(int number_connection)
 {
 	Connection* connection_requested = connections_handler_->at(number_connection);
+	return connection_requested;
 }
 
 void CPWDBManager::ShowConnections_()
 {
 	int c = 0;
-	for(auto& a : connections_handler_)
+	for(int a = 0; a <  (int)connections_handler_->size(); a++)
 	{
-		std::cout << "\n" << c++ << ". " << a->name_database_ << ", " << a->get_status();
+		auto h = connections_handler_->at(a);
+		std::cout << "\n" << c++ << ". " << h->get_name_database() << ", " << h->get_status();
 	}
 }
 
