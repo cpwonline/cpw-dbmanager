@@ -35,7 +35,7 @@ TEST_F(TestGen, Add)
     TestObj_->DatabaseConfigs_("test1", "root", "j0f1r2c3=1999");
     TestObj_->ShowConnections_();
     
-	std::cout << "\n---";
+	std::cout << "\n---\n";
 }
 
 //-----------------------------------------------------------------------------
