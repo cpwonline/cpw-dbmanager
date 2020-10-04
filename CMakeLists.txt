@@ -12,9 +12,8 @@ include_directories(include)
 add_subdirectory(src)
 
 target_include_directories(
-    ${PROJECT_NAME} PUBLIC
-    "${PROJECT_BINARY_DIR}"
+	${PROJECT_NAME} PUBLIC
+	"${PROJECT_BINARY_DIR}"
 )
 
-enable_testing()
 add_subdirectory(tests)
