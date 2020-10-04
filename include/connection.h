@@ -21,6 +21,12 @@
  * 
  */
 
+#include <iostream>
+#include <string>
+
+#include "handle_database.h"
+#include "sqlite3_handler.h"
+#include "mysql_handler.h"
 
 #ifndef CONNECTION_H_
 #define CONNECTION_H_
@@ -31,29 +37,29 @@ class Connection
 		Connection();
 		~Connection();
 		
-		string get_type() const;
-		string get_status() const;
-		string get_name_database() const;
-		string get_port_connection() const;
-		string get_user() const;
-		string get_password() const;
-		void set_type(string type);
-		void set_status(string status);
-		void set_name_database(string name_database);
-		void set_port_connection(string port_connection);
-		void set_user(string user);
-		void set_password(string password);
+		std::string get_type_database() const;
+		std::string get_server_address() const;
+		std::string get_status() const;
+		std::string get_name_database() const;
+		std::string get_port_connection() const;
+		std::string get_user() const;
+		std::string get_password() const;
+		void set_type_database(std::string type_database);
+		void set_server_address(std::string server_address);
+		void set_status(std::string status);
+		void set_name_database(std::string name_database);
+		void set_port_connection(std::string port_connection);
+		void set_user(std::string user);
+		void set_password(std::string password);
 		
-		void ReceiveData_();
 		bool Init_();
 		bool End_();
 		bool Restart_();
+		bool ConnectedToDatabase_();
 		
-		bool connected_to_database_;
-		
-	private:
+	protected:
 		HandleDatabase* generic_database_;
-		string type_, status_, name_database_, port_connection_, user_, password_;
+		std::string type_database_, server_address_, status_, name_database_, port_connection_, user_, password_;
 };
 
 #endif /* CONNECTION_H_ */ 
