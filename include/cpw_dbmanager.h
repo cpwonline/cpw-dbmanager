@@ -27,9 +27,6 @@
 #include <vector>
 
 #include "connection.h"
-#include "handle_database.h"
-#include "sqlite3_handler.h"
-#include "mysql_handler.h"
 
 #ifndef CPW_DBMANAGER_H_
 #define CPW_DBMANAGER_H_
@@ -40,15 +37,18 @@ class CPWDBManager
 		CPWDBManager();
 		~CPWDBManager();
 		
-		void NewConnection_(string type_connection, string name_database, string port_connection, string user, string password);
+		void NewConnection_(std::string type_database);
+		void ServerConfigs_(std::string server_address, std::string port_connection);
+		void DatabaseConfigs_(std::string name_database, std::string user, std::string password);
 		void DeleteConnection_(int number_connection);
 		void DeleteLastConnection_();
 		Connection* ViewConnection_(int number_connection);
+		void ShowConnections_();
 		bool ConnectionEmpty_();
 		int TotalConnections_();
 		
 	protected:
-		std::vector<Connection>* connections_handler_;
+		std::vector<Connection*>* connections_handler_;
 		std::vector<Connection>::iterator iterator_handler_;
 };
 
