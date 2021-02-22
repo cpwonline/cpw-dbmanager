@@ -25,7 +25,6 @@
 #include "connection.h"
 
 Connection::Connection() :
-	generic_database_(nullptr),
 	type_database_("Unknown"),
 	server_address_("127.0.0.1"),
 	status_("Not connected."),
@@ -112,13 +111,11 @@ bool Connection::Init_()
 {
 	if(type_database_ == "sqlite3")
 	{
-		generic_database_ = new SQLite3Handler;
 		status_ = "Connection init.";
 		return true;
 	}
 	else if(type_database_ == "mysql")
 	{
-		generic_database_ = new MySQLHandler;
 		status_ = "Connection init.";
 		return true;
 	}
@@ -131,21 +128,20 @@ bool Connection::Init_()
 
 bool Connection::Restart_()
 {
-	if(generic_database_ == nullptr)
+	if(true)
 	{
 		status_ = "Not connection found.";
 		return false;
 	}
 	else
 	{
-		delete generic_database_;
 		return Init_();
 	}
 }
 
 bool Connection::End_()
 {
-	if(generic_database_ == nullptr)
+	if(true)
 	{
 		status_ = "Not connection found.";
 		return false;
@@ -153,7 +149,6 @@ bool Connection::End_()
 	else
 	{
 		status_ = "Connection closed.";
-		delete generic_database_;
 		return true;
 	}
 }

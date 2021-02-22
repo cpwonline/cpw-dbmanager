@@ -1,7 +1,7 @@
 /*
- * mysql.h
+ * mysql_handler.h
  * 
- * Copyright 2020 Jose Felix Rivas Carrasco <josefelixrc@outlook.com>
+ * Copyright 2021 Jose Felix Rivas Carrasco <josefelixrc@outlook.com>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,23 +22,17 @@
  */
 
 
- #include <mysql.h>
- 
- #include <cstring>
- #include <cstdlib>
- 
- #include "handle_database.h"
-
 #ifndef MYSQL_HANDLER_H
 #define MYSQL_HANDLER_H
 
-class MySQLHandler : public HandleDatabase
+class MySQLHandler
 {
 	public:
 		MySQLHandler();
 		virtual ~MySQLHandler();
-		virtual bool PrepareDatabase_() override;
-		virtual void RunQuery_() override;
+	
+	private:
+		/* add your private declarations */
 };
 
 #endif /* MYSQL_HANDLER_H */ 

@@ -1,7 +1,7 @@
 /*
- * sqlite3.cc
+ * sqlite3_handler.cc
  * 
- * Copyright 2020 Jose Felix Rivas Carrasco <josefelixrc@outlook.com>
+ * Copyright 2021 Jose Felix Rivas Carrasco <josefelixrc@outlook.com>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,36 +30,9 @@ SQLite3Handler::SQLite3Handler()
 	
 }
 
+
 SQLite3Handler::~SQLite3Handler()
 {
 	
 }
 
-bool SQLite3Handler::PrepareDatabase_()
-{
-	error_result_ = 0;
-
-	// Open database
-	//response_result_ = sqlite3_open(name_database_,& sqlite_object_);
-	if (response_result_)
-	{
-		return false;
-	}
-	else
-	{
-		return true;
-	}
-}
-
-void SQLite3Handler::RunQuery_()
-{
-	//response_result_ = sqlite3_exec(sqlite_object_, query_sql_, NULL, 0,& error_result_);
-	if (response_result_ != SQLITE_OK)
-	{
-		//fprintf(stderr, "\n   |--Error: %s", error_result_);
-		//sqlite3_free(error_result_);
-	}
-	//else
-		//fprintf(stdout, "\n   |--Result: Database and tables OK.");
-
-}

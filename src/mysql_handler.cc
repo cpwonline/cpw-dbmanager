@@ -1,7 +1,7 @@
 /*
- * mysql.cc
+ * mysql_handler.cc
  * 
- * Copyright 2020 Jose Felix Rivas Carrasco <josefelixrc@outlook.com>
+ * Copyright 2021 Jose Felix Rivas Carrasco <josefelixrc@outlook.com>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,17 +30,9 @@ MySQLHandler::MySQLHandler()
 	
 }
 
+
 MySQLHandler::~MySQLHandler()
 {
 	
 }
 
-bool MySQLHandler::PrepareDatabase_()
-{
-	return true;
-}
-
-void  MySQLHandler::RunQuery_()
-{
-	
-}

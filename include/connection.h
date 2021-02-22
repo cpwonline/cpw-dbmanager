@@ -21,12 +21,11 @@
  * 
  */
 
-#include <iostream>
+
 #include <string>
 
-#include "handle_database.h"
-#include "sqlite3_handler.h"
-#include "mysql_handler.h"
+#include "url.h"
+#include "user.h"
 
 #ifndef CONNECTION_H_
 #define CONNECTION_H_
@@ -58,7 +57,6 @@ class Connection
 		bool ConnectedToDatabase_();
 		
 	protected:
-		HandleDatabase* generic_database_;
 		std::string type_database_, server_address_, status_, name_database_, port_connection_, user_, password_;
 };
 

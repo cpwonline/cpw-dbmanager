@@ -1,7 +1,7 @@
 /*
- * sqlite3.h
+ * sqlite3_handler.h
  * 
- * Copyright 2020 Jose Felix Rivas Carrasco <josefelixrc@outlook.com>
+ * Copyright 2021 Jose Felix Rivas Carrasco <josefelixrc@outlook.com>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,28 +20,19 @@
  * 
  * 
  */
- 
- #include <sqlite3.h>
- 
- #include <cstring>
- #include <cstdlib>
- 
- #include "handle_database.h"
 
 
-#ifndef SQLITE3_HANDLER_H_
-#define SQLITE3_HANDLER_H_
+#ifndef SQLITE3_HANDLER_H
+#define SQLITE3_HANDLER_H
 
-class SQLite3Handler : public HandleDatabase
+class SQLite3Handler
 {
 	public:
 		SQLite3Handler();
 		virtual ~SQLite3Handler();
-		virtual bool PrepareDatabase_() override;
-		virtual void RunQuery_() override;
-			
+	
 	private:
-		sqlite3* sqlite3_object_;
+		/* add your private declarations */
 };
 
-#endif /* SQLITE3_HANDLER_H_ */ 
+#endif /* SQLITE3_HANDLER_H */ 
