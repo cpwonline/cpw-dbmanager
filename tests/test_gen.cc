@@ -15,7 +15,7 @@ class TestGen : public ::testing::Test
 
 void TestGen::SetUp()
 {
-    TestObj_ = new CPWDBManager();
+	TestObj_ = new CPWDBManager();
 }
 
 void TestGen::TearDown()
@@ -27,21 +27,19 @@ void TestGen::TearDown()
 
 TEST_F(TestGen, Add)
 {
-	std::cout << "\n---";
-    ASSERT_EQ(1, 1);
-    
-    TestObj_->NewConnection_("sqlite3" );
-    TestObj_->ServerConfigs_("127.0.0.1", "3306");
-    TestObj_->DatabaseConfigs_("test1", "root", "j0f1r2c3=1999");
-    TestObj_->ShowConnections_();
-    
-	std::cout << "\n---\n";
+	ASSERT_EQ(1, 1);
+
+	std::cout << "\n-- Databases collector";
+	for(auto it = TestObj_->databases_collector_->begin(); it != TestObj_->databases_collector_->end(); ++it)
+		std::cout << "\n" << it->first << ", " << it->second;
+		
+	std::cout << "\n--\n";
 }
 
 //-----------------------------------------------------------------------------
 
 int main(int argc, char* argv[])
 {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+	::testing::InitGoogleTest(&argc, argv);
+	return RUN_ALL_TESTS();
 }
