@@ -1,3 +1,0 @@
-#define cpw-dbmanager_VERSION_MAYOR = @cpw-dbmanager_VERSION_MAYOR@
-#define cpw-dbmanager_VERSION_MINOR = @cpw-dbmanager_VERSION_MINOR@
-#define cpw-dbmanager_VERSION_PATCH = @cpw-dbmanager_VERSION_PATCH@
