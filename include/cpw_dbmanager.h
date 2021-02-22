@@ -23,7 +23,7 @@
 
 
 #include <string>
-#include <map>
+#include <list>
 
 #include "connection.h"
 #include "database.h"
@@ -37,22 +37,20 @@ class CPWDBManager
 		CPWDBManager();
 		~CPWDBManager();
 		
-		/*Connections*/
-		void CreateConnection_(std::string type_database);
-		void ServerConfigs_(std::string server_address, std::string port_connection);
-		void DeleteConnection_(int number_connection);
-		void DeleteLastConnection_();
-		Connection* ViewConnection_(int number_connection);
-		void ShowConnections_();
-		bool ConnectionEmpty_();
-		int TotalConnections_();
+		enum TypeDB
+		{
+			MySQL,
+			MariaDB,
+			SQLite3
+		};
 		
-		/* Databases */
-		void DatabaseConfigs_(std::string name_database, std::string user, std::string password);
+		void CreateConnection_(TypeDB type);
+		
+	public:
+		std::list<Database*>* databases_collector_;
+		std::list<Connection*>* connections_collector_;
 		
 	protected:
-		std::map<int, Database*> databases_collector_;
-		std::map<int, Connection*> connections_collector;
 };
 
 #endif /* CPW_DBMANAGER_H_ */ 
