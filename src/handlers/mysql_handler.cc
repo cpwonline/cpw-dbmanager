@@ -1,5 +1,5 @@
 /*
- * mariadb_handler.cc
+ * mysql_handler.cc
  * 
  * Copyright 2021 Jose Felix Rivas Carrasco <josefelixrc@outlook.com>
  * 
@@ -22,17 +22,21 @@
  */
 
 
-#include "mariadb_handler.h"
+#include "handlers/mysql_handler.h"
 
 
-MariaDBHandler::MariaDBHandler()
+MySQLHandler::MySQLHandler()
 {
 	
 }
 
 
-MariaDBHandler::~MariaDBHandler()
+MySQLHandler::~MySQLHandler()
 {
 	
 }
 
+void MySQLHandler::Connect_()
+{
+	
+}

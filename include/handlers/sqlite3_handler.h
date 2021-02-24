@@ -1,5 +1,5 @@
 /*
- * mysql_handler.cc
+ * sqlite3_handler.h
  * 
  * Copyright 2021 Jose Felix Rivas Carrasco <josefelixrc@outlook.com>
  * 
@@ -22,17 +22,21 @@
  */
 
 
-#include "mysql_handler.h"
+#include "database.h"
 
+#ifndef SQLITE3_HANDLER_H
+#define SQLITE3_HANDLER_H
 
-MySQLHandler::MySQLHandler()
+class SQLite3Handler : public Database
 {
+	public:
+		SQLite3Handler();
+		virtual ~SQLite3Handler();
 	
-}
-
-
-MySQLHandler::~MySQLHandler()
-{
+		void Connect_();
 	
-}
+	private:
+		/* add your private declarations */
+};
 
+#endif /* SQLITE3_HANDLER_H */ 

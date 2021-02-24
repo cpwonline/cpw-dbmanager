@@ -1,5 +1,5 @@
 /*
- * mariadb_handler.h
+ * sqlite3_handler.cc
  * 
  * Copyright 2021 Jose Felix Rivas Carrasco <josefelixrc@outlook.com>
  * 
@@ -22,17 +22,21 @@
  */
 
 
-#ifndef MARIADB_HANDLER_H
-#define MARIADB_HANDLER_H
+#include "handlers/sqlite3_handler.h"
 
-class MariaDBHandler
+
+SQLite3Handler::SQLite3Handler()
 {
-	public:
-		MariaDBHandler();
-		virtual ~MariaDBHandler();
 	
-	private:
-		/* add your private declarations */
-};
+}
 
-#endif /* MARIADB_HANDLER_H */ 
+
+SQLite3Handler::~SQLite3Handler()
+{
+	
+}
+
+void SQLite3Handler::Connect_()
+{
+	
+}
