@@ -1,5 +1,5 @@
 /*
- * url.cc
+ * access_data.cc
  * 
  * Copyright 2021 Jose Felix Rivas Carrasco <josefelixrc@outlook.com>
  * 
@@ -22,16 +22,16 @@
  */
 
 
-#include "url.h"
+#include "access_data.h"
 
 
-URL::URL()
+AccessData::AccessData()
 {
 	
 }
 
 
-URL::~URL()
+AccessData::~AccessData()
 {
 	
 }

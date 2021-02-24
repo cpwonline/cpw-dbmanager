@@ -1,5 +1,5 @@
 /*
- * user.cc
+ * access_data.h
  * 
  * Copyright 2021 Jose Felix Rivas Carrasco <josefelixrc@outlook.com>
  * 
@@ -22,17 +22,17 @@
  */
 
 
-#include "user.h"
+#ifndef ACCESS_DATA_H
+#define ACCESS_DATA_H
 
-
-USER::USER()
+class AccessData
 {
+	public:
+		AccessData();
+		virtual ~AccessData();
 	
-}
+	private:
+		/* add your private declarations */
+};
 
-
-USER::~USER()
-{
-	
-}
-
+#endif /* ACCESS_DATA_H */ 

@@ -1,5 +1,5 @@
 /*
- * url.h
+ * address.h
  * 
  * Copyright 2021 Jose Felix Rivas Carrasco <josefelixrc@outlook.com>
  * 
@@ -22,17 +22,17 @@
  */
 
 
-#ifndef URL_H
-#define URL_H
+#ifndef ADDRESS_H
+#define ADDRESS_H
 
-class URL
+class Address
 {
 	public:
-		URL();
-		virtual ~URL();
+		Address();
+		virtual ~Address();
 	
 	private:
 		/* add your private declarations */
 };
 
-#endif /* URL_H */ 
+#endif /* ADDRESS_H */ 

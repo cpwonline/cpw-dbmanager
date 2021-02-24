@@ -1,5 +1,5 @@
 /*
- * user.h
+ * address.cc
  * 
  * Copyright 2021 Jose Felix Rivas Carrasco <josefelixrc@outlook.com>
  * 
@@ -22,17 +22,17 @@
  */
 
 
-#ifndef USER_H
-#define USER_H
+#include "address.h"
 
-class USER
+
+Address::Address()
 {
-	public:
-		USER();
-		virtual ~USER();
 	
-	private:
-		/* add your private declarations */
-};
+}
 
-#endif /* USER_H */ 
+
+Address::~Address()
+{
+	
+}
+
