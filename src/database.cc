@@ -30,4 +30,7 @@ Database::Database()
 	
 }
 
-
+Database::~Database()
+{
+	
+}

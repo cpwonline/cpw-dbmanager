@@ -34,9 +34,12 @@ class Database
 {
 	public:
 		Database();
+		virtual ~Database();
+		
+		virtual void Connect_() = 0;
 			
 	private:
-		/* add your private declarations */
+		
 };
 
 #endif /* DATABASE_H */ 
