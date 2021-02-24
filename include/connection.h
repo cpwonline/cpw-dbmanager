@@ -1,7 +1,7 @@
 /*
  * connection.h
  * 
- * Copyright 2020 Jose Felix Rivas Carrasco <josefelixrc@outlook.com>
+ * Copyright 2021 Jose Felix Rivas Carrasco <josefelixrc@outlook.com>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,40 +24,20 @@
 
 #include <string>
 
-#include "url.h"
-#include "user.h"
+ #include "access_data.h"
+ #include "address.h"
 
-#ifndef CONNECTION_H_
-#define CONNECTION_H_
+#ifndef CONNECTION_H
+#define CONNECTION_H
 
 class Connection
 {
 	public:
 		Connection();
-		~Connection();
-		
-		std::string get_type_database() const;
-		std::string get_server_address() const;
-		std::string get_status() const;
-		std::string get_name_database() const;
-		std::string get_port_connection() const;
-		std::string get_user() const;
-		std::string get_password() const;
-		void set_type_database(std::string type_database);
-		void set_server_address(std::string server_address);
-		void set_status(std::string status);
-		void set_name_database(std::string name_database);
-		void set_port_connection(std::string port_connection);
-		void set_user(std::string user);
-		void set_password(std::string password);
-		
-		bool Init_();
-		bool End_();
-		bool Restart_();
-		bool ConnectedToDatabase_();
-		
-	protected:
-		std::string type_database_, server_address_, status_, name_database_, port_connection_, user_, password_;
+		virtual ~Connection();
+	
+	private:
+		/* add your private declarations */
 };
 
-#endif /* CONNECTION_H_ */ 
+#endif /* CONNECTION_H */ 
