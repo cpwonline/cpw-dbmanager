@@ -22,7 +22,8 @@ configure_file("${PROJECT_NAME}Config.h.in" "${PROJECT_NAME}Config.h")
 set(HEADER "${PROJECT_SOURCE_DIR}/include")
 
 # Add subdirectories
-add_subdirectory(src tests)
+add_subdirectory(src)
+add_subdirectory(tests)
 include_directories(${HEADER})
 
 
