@@ -30,8 +30,15 @@ TEST_F(TestGen, Add)
 	ASSERT_EQ(1, 1);
 
 	std::cout << "\n-- Databases collector";
+	
+	TestObj_->CreateConnection_(CPWDBManager::TypeDB::MariaDB);
+	TestObj_->CreateConnection_(CPWDBManager::TypeDB::MySQL);
+	TestObj_->CreateConnection_(CPWDBManager::TypeDB::SQLite3);
+	TestObj_->CreateConnection_(CPWDBManager::TypeDB::SQLite3);
+	
+	int a = 0;
 	for(auto it = TestObj_->databases_collector_->begin(); it != TestObj_->databases_collector_->end(); ++it)
-		std::cout << "\n" << it->first << ", " << it->second;
+		std::cout << "\n" << ++a;
 		
 	std::cout << "\n--\n";
 }
