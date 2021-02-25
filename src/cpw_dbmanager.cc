@@ -42,24 +42,30 @@ CPWDBManager::~CPWDBManager()
 	delete connections_collector_;
 }
 
-void CPWDBManager::CreateConnection_(TypeDB type)
+std::list<Database*>* CPWDBManager::get_databases_collector() const
+{
+	return databases_collector_;
+}
+
+void CPWDBManager::CreateConnection_(TypeDB type, std::string ip_or_domain, std::string port, std::string database_name, std::string username, std::string password)
 {
 	switch(type)
 	{
 		case TypeDB::MariaDB:
 		{
-			databases_collector_->push_back(new Database("MariaDB"));
+			databases_collector_->push_back(new MariaDBHandler());
 			break;
 		}
 		case TypeDB::MySQL:
 		{
-			databases_collector_->push_back(new Database("MySQL"));
+			databases_collector_->push_back(new MySQLHandler());
 			break;
 		}
 		case TypeDB::SQLite3:
 		{
-			databases_collector_->push_back(new Database("SQLite3"));
+			databases_collector_->push_back(new SQLite3Handler());
 			break;
 		}
 	}
+	connections_collector_->push_back(new Connection(databases_collector_->back()));
 }
