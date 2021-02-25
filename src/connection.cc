@@ -31,9 +31,22 @@ Connection::Connection(Database* database) :
 	
 }
 
-
 Connection::~Connection()
 {
 	
 }
 
+Database* Connection::get_connected_database() const
+{
+	return connected_database_;
+}
+
+AccessData* Connection::get_current_access_data() const
+{
+	return current_access_data_;
+}
+
+Address* Connection::get_current_address() const
+{
+	return current_address_;
+}

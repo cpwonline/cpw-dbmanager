@@ -36,6 +36,11 @@ class Connection
 	public:
 		Connection(Database* database);
 		virtual ~Connection();
+		
+	public:
+		Database* get_connected_database() const;
+		AccessData* get_current_access_data() const;
+		Address* get_current_address() const;
 	
 	private:
 		Database* connected_database_;
