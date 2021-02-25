@@ -25,7 +25,8 @@
 #include "connection.h"
 
 
-Connection::Connection()
+Connection::Connection(Database* database) :
+	connected_database_(database)
 {
 	
 }

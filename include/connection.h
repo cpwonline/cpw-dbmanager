@@ -26,6 +26,7 @@
 
  #include "access_data.h"
  #include "address.h"
+ #include "database.h"
 
 #ifndef CONNECTION_H
 #define CONNECTION_H
@@ -33,11 +34,13 @@
 class Connection
 {
 	public:
-		Connection();
+		Connection(Database* database);
 		virtual ~Connection();
 	
 	private:
-		/* add your private declarations */
+		Database* connected_database_;
+		AccessData* current_access_data_;
+		Address* current_address_;
 };
 
 #endif /* CONNECTION_H */ 
