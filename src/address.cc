@@ -30,9 +30,27 @@ Address::Address()
 	
 }
 
-
 Address::~Address()
 {
 	
 }
 
+std::string Address::get_internet_address() const
+{
+	return internet_address_;
+}
+
+std::string Address::get_port() const
+{
+	return port_;
+}
+
+void Address::set_internet_address(std::string internet_address)
+{
+	internet_address_ = internet_address;
+}
+
+void Address::set_port(std::string port)
+{
+	port_ = port;
+}

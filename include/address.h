@@ -22,6 +22,8 @@
  */
 
 
+#include <string>
+
 #ifndef ADDRESS_H
 #define ADDRESS_H
 
@@ -30,9 +32,15 @@ class Address
 	public:
 		Address();
 		virtual ~Address();
+		
+	public:
+		std::string get_internet_address() const;
+		std::string get_port() const;
+		void set_internet_address(std::string internet_address);
+		void set_port(std::string port);
 	
 	private:
-		/* add your private declarations */
+		std::string internet_address_, port_;
 };
 
 #endif /* ADDRESS_H */ 
