@@ -10,4 +10,4 @@ pkg_search_module(GTEST REQUIRED gtest)
 
 # Add and linking libraries for Executable
 target_include_directories(test_gen PUBLIC ${HEADER})
-target_link_libraries(test_gen PUBLIC ${GTEST_LIBRARIES} cpwdbmanager)
+target_link_libraries(test_gen PUBLIC ${GTEST_LIBRARIES} ${PROJECT_NAME})
