@@ -22,6 +22,8 @@
  */
 
 
+#include <string>
+
 #ifndef ACCESS_DATA_H
 #define ACCESS_DATA_H
 
@@ -30,9 +32,15 @@ class AccessData
 	public:
 		AccessData();
 		virtual ~AccessData();
+		
+	public:
+		std::string get_username() const;
+		std::string get_password() const;
+		void set_username(std::string username);
+		void set_password(std::string password);
 	
 	private:
-		/* add your private declarations */
+		std::string username_, password_;
 };
 
 #endif /* ACCESS_DATA_H */ 

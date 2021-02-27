@@ -36,3 +36,22 @@ AccessData::~AccessData()
 	
 }
 
+std::string AccessData::get_username() const
+{
+	return username_;
+}
+
+std::string AccessData::get_password() const
+{
+	return password_;
+}
+
+void AccessData::set_username(std::string username)
+{
+	username_ = username;
+}
+
+void AccessData::set_password(std::string password)
+{
+	password_ = password;
+}
