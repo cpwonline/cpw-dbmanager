@@ -28,12 +28,14 @@
 Connection::Connection(Database* database) :
 	connected_database_(database)
 {
-	
+	current_access_data_ = new AccessData();
+	current_address_ = new Address();
 }
 
 Connection::~Connection()
 {
-	
+	delete current_access_data_;
+	delete current_address_;
 }
 
 Database* Connection::get_connected_database() const
@@ -49,4 +51,9 @@ AccessData* Connection::get_current_access_data() const
 Address* Connection::get_current_address() const
 {
 	return current_address_;
+}
+
+void Connection::Init_()
+{
+	connected_database_->Connect_(current_access_data_, current_address_);
 }
