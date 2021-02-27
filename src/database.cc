@@ -34,3 +34,13 @@ Database::~Database()
 {
 	
 }
+
+std::string Database::get_name() const
+{
+	return name_;
+}
+
+void Database::set_name(std::string name)
+{
+	name_ = name;
+}

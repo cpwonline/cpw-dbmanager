@@ -26,6 +26,8 @@
 #include "query.h"
 #include "result.h"
 #include "table.h"
+#include "access_data.h"
+#include "address.h"
 
 #ifndef DATABASE_H
 #define DATABASE_H
@@ -36,9 +38,15 @@ class Database
 		Database();
 		virtual ~Database();
 		
-		virtual void Connect_() = 0;
+	public:
+		std::string get_name() const;
+		void set_name(std::string name);
+	
+	public:
+		virtual void Connect_(AccessData* access_data, Address* address) = 0;
 			
 	private:
+		std::string name_;
 		
 };
 
