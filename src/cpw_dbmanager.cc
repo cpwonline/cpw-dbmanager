@@ -72,10 +72,25 @@ void CPWDBManager::CreateConnection_(TypeDB type, std::string internet_address, 
 			break;
 		}
 	}
+	CompleteMainSettings_(database_name);
+	CompleteAddress_(internet_address, port);
+	CompleteAccessData_(username, password);
+}
+
+void CPWDBManager::CompleteMainSettings_(std::string database_name)
+{
 	connections_collector_->push_back(new Connection(databases_collector_->back()));
+	connections_collector_->back()->get_connected_database()->set_name(database_name);
+}
+
+void CPWDBManager::CompleteAddress_(std::string internet_address, std::string port)
+{
 	connections_collector_->back()->get_current_address()->set_internet_address(internet_address);
 	connections_collector_->back()->get_current_address()->set_port(port);
+}
+
+void CPWDBManager::CompleteAccessData_(std::string username, std::string password)
+{
 	connections_collector_->back()->get_current_access_data()->set_username(username);
 	connections_collector_->back()->get_current_access_data()->set_password(password);
-	connections_collector_->back()->get_connected_database()->set_name(database_name);
 }
