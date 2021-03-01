@@ -47,7 +47,12 @@ std::list<Database*>* CPWDBManager::get_databases_collector() const
 	return databases_collector_;
 }
 
-void CPWDBManager::CreateConnection_(TypeDB type, std::string ip_or_domain, std::string port, std::string database_name, std::string username, std::string password)
+std::list<Connection*>* CPWDBManager::get_connections_collector() const
+{
+	return connections_collector_;
+}
+
+void CPWDBManager::CreateConnection_(TypeDB type, std::string internet_address, std::string port, std::string database_name, std::string username, std::string password)
 {
 	switch(type)
 	{
@@ -68,4 +73,9 @@ void CPWDBManager::CreateConnection_(TypeDB type, std::string ip_or_domain, std:
 		}
 	}
 	connections_collector_->push_back(new Connection(databases_collector_->back()));
+	connections_collector_->back()->get_current_address()->set_internet_address(internet_address);
+	connections_collector_->back()->get_current_address()->set_port(port);
+	connections_collector_->back()->get_current_access_data()->set_username(username);
+	connections_collector_->back()->get_current_access_data()->set_password(password);
+	connections_collector_->back()->get_connected_database()->set_name(database_name);
 }

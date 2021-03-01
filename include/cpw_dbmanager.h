@@ -40,7 +40,9 @@ class CPWDBManager
 		CPWDBManager();
 		~CPWDBManager();
 		
+	public:
 		std::list<Database*>* get_databases_collector() const;
+		std::list<Connection*>* get_connections_collector() const;
 		
 		enum TypeDB
 		{
@@ -49,13 +51,13 @@ class CPWDBManager
 			SQLite3
 		};
 		
-		void CreateConnection_(TypeDB type, std::string ip_or_domain, std::string port, std::string database_name, std::string username, std::string password);
-		
-	public:
-		std::list<Database*>* databases_collector_;
-		std::list<Connection*>* connections_collector_;
+		void CreateConnection_(TypeDB type, std::string internet_address, std::string port, std::string database_name, std::string username, std::string password);
 		
 	protected:
+	
+	private:
+		std::list<Database*>* databases_collector_;
+		std::list<Connection*>* connections_collector_;
 };
 
 #endif /* CPW_DBMANAGER_H_ */ 
