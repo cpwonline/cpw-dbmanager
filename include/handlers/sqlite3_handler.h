@@ -33,7 +33,8 @@ class SQLite3Handler : public Database
 		SQLite3Handler();
 		virtual ~SQLite3Handler();
 	
-		void Connect_();
+		void Connect_(AccessData* access_data, Address* address);
+		void Disconnect_();
 	
 	private:
 		/* add your private declarations */

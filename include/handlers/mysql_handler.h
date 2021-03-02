@@ -33,7 +33,8 @@ class MySQLHandler : public Database
 		MySQLHandler();
 		virtual ~MySQLHandler();
 	
-		void Connect_();
+		void Connect_(AccessData* access_data, Address* address);
+		void Disconnect_();
 	
 	private:
 		/* add your private declarations */

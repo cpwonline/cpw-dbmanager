@@ -36,7 +36,12 @@ SQLite3Handler::~SQLite3Handler()
 	
 }
 
-void SQLite3Handler::Connect_()
+void SQLite3Handler::Connect_(AccessData* access_data, Address* address)
+{
+	
+}
+
+void SQLite3Handler::Disconnect_()
 {
 	
 }

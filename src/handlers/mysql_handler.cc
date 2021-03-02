@@ -36,7 +36,12 @@ MySQLHandler::~MySQLHandler()
 	
 }
 
-void MySQLHandler::Connect_()
+void MySQLHandler::Connect_(AccessData* access_data, Address* address)
+{
+	
+}
+
+void MySQLHandler::Disconnect_()
 {
 	
 }
