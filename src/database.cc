@@ -40,7 +40,38 @@ std::string Database::get_name() const
 	return name_;
 }
 
+
+int Database::get_errno() const
+{
+	return errno_;
+}
+
+std::string Database::get_error() const
+{
+	return error_;
+}
+
+bool Database::get_state() const
+{
+	return state_;
+}
+
 void Database::set_name(std::string name)
 {
 	name_ = name;
+}
+
+void Database::set_error(std::string error)
+{
+	error_ = error;
+}
+
+void Database::set_errno(int errno)
+{
+	errno_ = errno;
+}
+
+void Database::set_state(bool state)
+{
+	state_ = state;
 }

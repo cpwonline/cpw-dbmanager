@@ -39,14 +39,25 @@ class Database
 		virtual ~Database();
 		
 	public:
+		int get_errno() const;
+		std::string get_error() const;
+		bool get_state() const;
 		std::string get_name() const;
 		void set_name(std::string name);
 	
 	public:
 		virtual void Connect_(AccessData* access_data, Address* address) = 0;
+		virtual void Disconnect_() = 0;
+		
+	protected:
+		void set_errno(int errno);
+		void set_error(std::string error);
+		void set_state(bool state);
 			
 	private:
-		std::string name_;
+		int errno_;
+		std::string name_, error_;
+		bool state_;
 		
 };
 
