@@ -21,6 +21,7 @@
  * 
  */
 
+#include <mysql.h>
 
 #include "database.h"
 
@@ -33,10 +34,11 @@ class MariaDBHandler : public Database
 		MariaDBHandler();
 		virtual ~MariaDBHandler();
 		
-		void Connect_();
+		void Connect_(AccessData* access_data, Address* address);
+		void Disconnect_();
 	
 	private:
-		/* add your private declarations */
+		MYSQL* mMariadb;
 };
 
 #endif /* MARIADB_HANDLER_H */ 

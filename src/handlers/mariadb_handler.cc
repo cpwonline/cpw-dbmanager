@@ -27,7 +27,14 @@
 
 MariaDBHandler::MariaDBHandler()
 {
-	
+	set_state(true);
+	mMariadb = mysql_init(NULL);
+	if(mMariadb == NULL)
+	{
+		set_error((std::string)mysql_error(mMariadb));
+		set_state(false);
+		Disconnect_();
+	}
 }
 
 
@@ -36,7 +43,19 @@ MariaDBHandler::~MariaDBHandler()
 	
 }
 
-void MariaDBHandler::Connect_()
+void MariaDBHandler::Connect_(AccessData* access_data, Address* address)
 {
-	
+	if(mysql_real_connect(mMariadb, address->get_internet_address().c_str(), access_data->get_username().c_str(), access_data->get_password().c_str(), NULL, 0 , NULL, 0) == NULL)
+	{
+		set_error((std::string)mysql_error(mMariadb));
+		set_state(false);
+		Disconnect_();
+	}
+	else
+		set_state(true);
+}
+
+void MariaDBHandler::Disconnect_()
+{
+	mysql_close(mMariadb);
 }
