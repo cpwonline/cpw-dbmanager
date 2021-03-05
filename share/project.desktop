@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Project
+Type=Application
+Exec=command-program
+Terminal=false
+Icon=icon-program
+Comment=Comments
+NoDisplay=false
+Categories=

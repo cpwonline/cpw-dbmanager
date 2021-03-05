@@ -1,7 +1,6 @@
 #include <iostream>
-
 #include "gtest/gtest.h"
-#include "cpw_dbmanager.h"
+#include "Biblioteca.h"
 
 class TestGen : public ::testing::Test
 {
@@ -9,14 +8,14 @@ class TestGen : public ::testing::Test
 		void SetUp() override;
 		void TearDown() override;
 
-		CPWDBManager *TestObj_;
+		Biblioteca *TestObj_;
 };
 
 //-----------------------------------------------------------------------------
 
 void TestGen::SetUp()
 {
-	TestObj_ = new CPWDBManager();
+    TestObj_ = new Biblioteca();
 }
 
 void TestGen::TearDown()
@@ -26,69 +25,30 @@ void TestGen::TearDown()
 
 //-----------------------------------------------------------------------------
 
-TEST_F(TestGen, ViewData)
+TEST_F(TestGen, Add)
 {
-	std::cout << "\n-- ViewData";
-	
-	TestObj_->CreateConnection_(CPWDBManager::TypeDB::MariaDB, "localhost", "3033", "test", "root", "26552160jfrc");
-	
-	int a = 0;
-	for(auto it = TestObj_->get_connections_collector()->begin(); it != TestObj_->get_connections_collector()->end(); ++it)
-	{
-		std::cout << "\n" << ++a
-			<< "\n- Database: " << (*it)->get_connected_database()->get_name()
-			<< "\n- Access data: " << (*it)->get_current_access_data()->get_username() << ", " << (*it)->get_current_access_data()->get_password()
-			<< "\n- Address: " << (*it)->get_current_address()->get_internet_address() << ", " << (*it)->get_current_address()->get_port()
-		;
-	}
-	std::cout << "\n--\n";
-	
-	ASSERT_GT(a, 0);
+    ASSERT_EQ(5, TestObj_->add(3, 2));
+    ASSERT_EQ(8, TestObj_->add(4, 4));
+    ASSERT_EQ(12, TestObj_->add(9, 3));
 }
 
-TEST_F(TestGen, InitDatabase)
+TEST_F(TestGen, Sub)
 {
-	std::cout << "\n-- InitDatabase";
-	
-	TestObj_->CreateConnection_(CPWDBManager::TypeDB::MariaDB, "localhost", "3033", "test", "root", "26552160jfrc");
-	auto it = TestObj_->get_connections_collector()->back(); 
-	if(it != nullptr)
-	{
-		it->Init_();
-		ASSERT_TRUE(it->get_connected_database()->get_state());
-		if(it->get_connected_database()->get_state())
-		{
-			std::cout << "\nConectado";
-		}
-		it->get_connected_database()->Disconnect_();
-	}
-	
-	std::cout << "\n--\n";
+    ASSERT_EQ(4, TestObj_->sub(6, 2));
+    ASSERT_EQ(10, TestObj_->sub(15, 5));
 }
 
-TEST_F(TestGen, TestQuery)
+TEST_F(TestGen, Mul)
 {
-	std::cout << "\n-- TestQuery";
-	
-	TestObj_->CreateConnection_(CPWDBManager::TypeDB::MariaDB, "localhost", "3033", "test", "root", "26552160jfrc");
-	auto it = TestObj_->get_connections_collector()->back(); 
-	if(it != nullptr)
-	{
-		it->NewQuery("SHOW DATABASES;");
-		it->NewQuery("SHOW DATABASES;");
-		it->NewQuery("SHOW DATABASES;");
-		//it->get_queries_results()->end()->first->set_state(true);
-		for(auto it2 = it->get_queries_results()->begin(); it2 != it->get_queries_results()->end(); ++it2)
-		{
-			std::cout << "\n -- Un resultado: " << it2->first->get_query();
-		}
-	}
+    ASSERT_EQ(6, TestObj_->mul(3, 2));
+    ASSERT_EQ(27, TestObj_->mul(3, 9));
+    ASSERT_EQ(12, TestObj_->mul(2, 6));
 }
 
 //-----------------------------------------------------------------------------
 
 int main(int argc, char* argv[])
 {
-	::testing::InitGoogleTest(&argc, argv);
-	return RUN_ALL_TESTS();
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }

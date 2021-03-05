@@ -1,71 +1,35 @@
-# Add subdirectories
-add_subdirectory(handlers)
+# Use PkgConfig
+include(FindPkgConfig)
+find_package(PkgConfig REQUIRED)
+pkg_search_module(DEPENDENCY1 REQUIRED library1_optional library2_optional)
+pkg_search_module(DEPENDENCY2 REQUIRED library)
 
 # Targets
 
 ## Objects libraries
 
-### column
-add_library(column OBJECT "column.cc")
-target_include_directories(column PUBLIC ${HEADER})
-set_target_properties(column PROPERTIES POSITION_INDEPENDENT_CODE 1)
-
-### connection
-add_library(connection OBJECT "connection.cc")
-target_include_directories(connection PUBLIC ${HEADER})
-set_target_properties(connection PROPERTIES POSITION_INDEPENDENT_CODE 1)
-
-### database
-add_library(database OBJECT "database.cc")
-target_include_directories(database PUBLIC ${HEADER})
-set_target_properties(database PROPERTIES POSITION_INDEPENDENT_CODE 1)
-
-### query
-add_library(query OBJECT "query.cc")
-target_include_directories(query PUBLIC ${HEADER})
-set_target_properties(query PROPERTIES POSITION_INDEPENDENT_CODE 1)
-
-### result
-add_library(result OBJECT "result.cc")
-target_include_directories(result PUBLIC ${HEADER})
-set_target_properties(result PROPERTIES POSITION_INDEPENDENT_CODE 1)
-
-### row
-add_library(row OBJECT "row.cc")
-target_include_directories(row PUBLIC ${HEADER})
-set_target_properties(row PROPERTIES POSITION_INDEPENDENT_CODE 1)
-
-### table
-add_library(table OBJECT "table.cc")
-target_include_directories(table PUBLIC ${HEADER})
-set_target_properties(table PROPERTIES POSITION_INDEPENDENT_CODE 1)
-
-### address
-add_library(address OBJECT "address.cc")
-target_include_directories(address PUBLIC ${HEADER})
-set_target_properties(address PROPERTIES POSITION_INDEPENDENT_CODE 1)
-
-### accessdata
-add_library(accessdata OBJECT "access_data.cc")
-target_include_directories(accessdata PUBLIC ${HEADER})
-set_target_properties(accessdata PROPERTIES POSITION_INDEPENDENT_CODE 1)
+### object1
+add_library(object1 SHARED "object1.cc")
+target_include_directories(object1 PUBLIC ${HEADER})
+set_target_properties(object1 PROPERTIES POSITION_INDEPENDENT_CODE 1)
 
 ## Shared and statics libraries
 
-### cpwdbmanager
-add_library(${PROJECT_NAME} SHARED "cpw_dbmanager.cc")
+### library1
+add_library(library1 SHARED "library1.cc")
+target_include_directories(library1 PUBLIC ${HEADER} ${DEPENDENCY1_INCLUDE_DIRS})
+target_link_libraries(library1 ${DEPENDENCY1_LIBRARIES} object1)
+install(FILES "${HEADER}/library1.h" DESTINATION include)
+install(TARGETS library1 DESTINATION lib)
+
+### library2
+add_library(library2 STATIC "library2.cc")
+target_include_directories(library2 PUBLIC ${HEADER} ${DEPENDENCY2_INCLUDE_DIRS})
+target_link_libraries(library2 ${DEPENDENCY2_LIBRARIES} object1)
+install(TARGETS library2 DESTINATION "lib/{$PROJECT_NAME}")
+
+## Main executable
+add_executable(${PROJECT_NAME} "main.cc")
 target_include_directories(${PROJECT_NAME} PUBLIC ${HEADER})
-target_link_libraries(
-	${PROJECT_NAME} PUBLIC
-	connection
-	database
-	mariadbhandler
-	mysqlhandler
-	sqlite3handler
-	accessdata
-	address
-	query
-	result
-)
-install(FILES "${HEADER}/cpw_dbmanager.h" DESTINATION include)
-install(TARGETS ${PROJECT_NAME} DESTINATION lib)
+target_link_libraries(${PROJECT_NAME} PUBLIC library1 library2)
+install(TARGETS ${PROJECT_NAME} DESTINATION bin)
