@@ -23,10 +23,14 @@
 
 
 #include <string>
+#include <list>
+#include <map>
 
  #include "access_data.h"
  #include "address.h"
  #include "database.h"
+ #include "result.h"
+ #include "query.h"
 
 #ifndef CONNECTION_H
 #define CONNECTION_H
@@ -41,6 +45,8 @@ class Connection
 		Database* get_connected_database() const;
 		AccessData* get_current_access_data() const;
 		Address* get_current_address() const;
+		std::list<Query*>* get_queries() const;
+		std::map<Query*, Result*>* get_queries_results() const;
 		
 	public:
 		void Init_();
@@ -49,6 +55,8 @@ class Connection
 		Database* connected_database_;
 		AccessData* current_access_data_;
 		Address* current_address_;
+		std::list<Query*>* queries_;
+		std::map<Query*, Result*>* queries_results_;
 };
 
 #endif /* CONNECTION_H */ 
