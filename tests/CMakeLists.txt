@@ -1,5 +1,4 @@
 # Tests
-enable_testing()
 add_executable(test_gen test_gen.cc)
 add_test(testGen test_gen)
 
