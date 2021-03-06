@@ -44,6 +44,7 @@ class CPWDBManager
 		std::list<Database*>* get_databases_collector() const;
 		std::list<Connection*>* get_connections_collector() const;
 		
+	public:
 		enum TypeDB
 		{
 			MySQL,
@@ -51,6 +52,7 @@ class CPWDBManager
 			SQLite3
 		};
 		
+	public:
 		void CreateConnection_(TypeDB type, std::string internet_address, std::string port, std::string database_name, std::string username, std::string password);
 		
 	protected:

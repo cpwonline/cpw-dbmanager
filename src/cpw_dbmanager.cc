@@ -33,12 +33,10 @@ CPWDBManager::CPWDBManager()
 
 CPWDBManager::~CPWDBManager()
 {
-	for(auto it = databases_collector_->begin(); it != databases_collector_->end(); ++it)
-		delete *it;
+	for(auto it = databases_collector_->begin(); it != databases_collector_->end(); ++it) delete *it;
 	delete databases_collector_;
 	
-	for(auto it = connections_collector_->begin(); it != connections_collector_->end(); ++it)
-		delete *it;
+	for(auto it = connections_collector_->begin(); it != connections_collector_->end(); ++it) delete *it;
 	delete connections_collector_;
 }
 
