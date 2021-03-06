@@ -31,5 +31,10 @@ install(FILES "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.h" DESTINATION includ
 
 # Add subdirectories
 add_subdirectory(src)
-add_subdirectory(tests)
 include_directories(${HEADER})
+
+# Testing
+if(${PROJECT_NAME}_ENABLE_TESTING)
+	enable_testing()
+	add_subdirectory(tests)
+endif()
