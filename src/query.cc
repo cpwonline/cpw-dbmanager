@@ -30,4 +30,37 @@ Query::Query()
 	
 }
 
+Query::~Query()
+{
+	
+}
 
+std::string Query::get_query() const
+{
+	return query_;
+}
+
+bool Query::get_state() const
+{
+	return state_;
+}
+
+int Query::get_times_used() const
+{
+	return times_used_;
+}
+
+void Query::set_query(std::string query)
+{
+	query_ = query;
+}
+
+void Query::set_state(bool state)
+{
+	state_ = state;
+}
+
+void Query::set_times_used(int times_used)
+{
+	times_used_ = times_used;
+}

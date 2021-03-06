@@ -21,6 +21,7 @@
  * 
  */
 
+#include <string>
 
 #ifndef QUERY_H
 #define QUERY_H
@@ -29,9 +30,22 @@ class Query
 {
 	public:
 		Query();
+		virtual ~Query();
+		
+	public:
+		std::string get_query() const;
+		bool get_state() const;
+		int get_times_used() const;
+		
+	public:
+		void set_query(std::string query);
+		void set_state(bool state);
+		void set_times_used(int times_used);
 			
 	private:
-		/* add your private declarations */
+		std::string query_;
+		bool state_;
+		int times_used_;
 };
 
 #endif /* QUERY_H */ 
