@@ -79,8 +79,7 @@ void Connection::Init_()
 
 void Connection::NewQuery(std::string query)
 {
-	queries_results_->emplace(new Query(), new Result());
-	auto it = queries_results_->end();
-	it--;
-	it->first->set_query(query);
+	queries_->push_back(new Query());
+	queries_results_->emplace(queries_->back(), new Result());
+	queries_->back()->set_query(query);
 }
