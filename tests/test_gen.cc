@@ -66,6 +66,27 @@ TEST_F(TestGen, InitDatabase)
 	std::cout << "\n--\n";
 }
 
+TEST_F(TestGen, TestQuery)
+{
+	std::cout << "\n-- TestQuery";
+	
+	TestObj_->CreateConnection_(CPWDBManager::TypeDB::MariaDB, "localhost", "3033", "test", "root", "26552160jfrc");
+	auto it = TestObj_->get_connections_collector()->back(); 
+	if(it != nullptr)
+	{
+		it->NewQuery("SHOW DATABASES;");
+		it->NewQuery("SHOW TABLES;");
+		it->NewQuery("SHOW COLUMNS FROM table;");
+		it->NewQuery("INSERT INTO ;");
+		for(auto it2 = it->get_queries_results()->begin(); it2 != it->get_queries_results()->end(); ++it2)
+		{
+			std::cout << "\n -- Un resultado: " << it2->first->get_query();
+		}
+	}
+	
+	std::cout << "\n--\n";
+}
+
 //-----------------------------------------------------------------------------
 
 int main(int argc, char* argv[])
