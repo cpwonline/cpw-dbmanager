@@ -46,6 +46,7 @@ class Connection
 		AccessData* get_current_access_data() const;
 		Address* get_current_address() const;
 		std::list<Query*>* get_queries() const;
+		std::list<Result*>* get_results() const;
 		std::map<Query*, Result*>* get_queries_results() const;
 		
 	public:
@@ -57,6 +58,7 @@ class Connection
 		AccessData* current_access_data_;
 		Address* current_address_;
 		std::list<Query*>* queries_;
+		std::list<Result*>* results_;
 		std::map<Query*, Result*>* queries_results_;
 };
 

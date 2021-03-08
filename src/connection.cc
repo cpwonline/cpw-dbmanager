@@ -31,6 +31,7 @@ Connection::Connection(Database* database) :
 	current_access_data_ = new AccessData();
 	current_address_ = new Address();
 	queries_ = new std::list<Query*>;
+	results_ = new std::list<Result*>;
 	queries_results_ = new std::map<Query*, Result*>;
 }
 
@@ -45,6 +46,8 @@ Connection::~Connection()
 		delete (*it).second;
 	}
 	delete queries_results_;
+	delete queries_;
+	delete results_;
 }
 
 Database* Connection::get_connected_database() const
@@ -62,14 +65,19 @@ Address* Connection::get_current_address() const
 	return current_address_;
 }
 
-std::map<Query*, Result*>* Connection::get_queries_results() const
-{
-	return queries_results_;
-}
-
 std::list<Query*>* Connection::get_queries() const
 {
 	return queries_;
+}
+
+std::list<Result*>* Connection::get_results() const
+{
+	return results_;
+}
+
+std::map<Query*, Result*>* Connection::get_queries_results() const
+{
+	return queries_results_;
 }
 
 void Connection::Init_()
