@@ -36,14 +36,16 @@ class Query
 		std::string get_query() const;
 		bool get_state() const;
 		int get_times_used() const;
+		std::string get_error() const;
 		
 	public:
 		void set_query(std::string query);
 		void set_state(bool state);
 		void set_times_used(int times_used);
+		void set_error(std::string);
 			
 	private:
-		std::string query_;
+		std::string query_, error_;
 		bool state_;
 		int times_used_;
 };

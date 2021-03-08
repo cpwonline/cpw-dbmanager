@@ -25,7 +25,8 @@
 #include "query.h"
 
 
-Query::Query()
+Query::Query() :
+	state_(true)
 {
 	
 }
@@ -50,6 +51,11 @@ int Query::get_times_used() const
 	return times_used_;
 }
 
+std::string Query::get_error() const
+{
+	return error_;
+}
+
 void Query::set_query(std::string query)
 {
 	query_ = query;
@@ -63,4 +69,9 @@ void Query::set_state(bool state)
 void Query::set_times_used(int times_used)
 {
 	times_used_ = times_used;
+}
+
+void Query::set_error(std::string error)
+{
+	error_ = error;
 }
