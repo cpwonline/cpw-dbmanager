@@ -83,22 +83,21 @@ bool MariaDBHandler::Disconnect_()
 
 bool MariaDBHandler::Query_(Query* query, Result* result)
 {
-	if(mMariadb == NULL)
+	if(mMariadb_ == NULL)
 	{
-		set_error((std::string)mysql_error(mMariadb));
-		Disconnect_();
+		set_state(false);
+		set_error((std::string)mysql_error(mMariadb_));
 		return false;
 	}
 	if(!query->get_state())
 	{
-		Disconnect_();
+		set_error("Error on query");
 		return false;
 	}
-	if(mysql_query(mMariadb, "SHOW DATABASES;"))
+	if(mysql_query(mMariadb_, query->get_query().c_str()))
 	{
 		query->set_state(false);
-		set_error((std::string)mysql_error(mMariadb));
-		Disconnect_();
+		query->set_error((std::string)mysql_error(mMariadb_));
 		return false;
 	}
 	else
