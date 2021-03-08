@@ -46,13 +46,17 @@ class Database
 		void set_name(std::string name);
 	
 	public:
-		virtual void Connect_(AccessData* access_data, Address* address) = 0;
-		virtual void Disconnect_() = 0;
+		virtual bool Connect_(AccessData* access_data, Address* address) = 0;
+		virtual bool Disconnect_() = 0;
+		virtual bool Query_(Query* query, Result* result) = 0;
 		
 	protected:
 		void set_errno(int errno);
 		void set_error(std::string error);
 		void set_state(bool state);
+		
+	protected:
+		virtual bool Init_() = 0;
 			
 	private:
 		int errno_;
