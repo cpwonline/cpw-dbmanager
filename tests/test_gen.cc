@@ -70,18 +70,42 @@ TEST_F(TestGen, TestQuery)
 {
 	std::cout << "\n-- TestQuery";
 	
+	// Create the connection
 	TestObj_->CreateConnection_(CPWDBManager::TypeDB::MariaDB, "localhost", "3033", "test", "root", "26552160jfrc");
+	
+	// See the last connection
 	auto it = TestObj_->get_connections_collector()->back(); 
 	if(it != nullptr)
 	{
-		it->NewQuery("SHOW DATABASES;");
-		it->NewQuery("SHOW TABLES;");
-		it->NewQuery("SHOW COLUMNS FROM table;");
-		it->NewQuery("INSERT INTO ;");
-		for(auto it2 = it->get_queries_results()->begin(); it2 != it->get_queries_results()->end(); ++it2)
+		// Init the database connection
+		it->Init_();
+		
+		// View the database connection
+		if(it->get_connected_database()->get_state())
 		{
-			std::cout << "\n -- Un resultado: " << it2->first->get_query();
+			// Insert queries
+			it->NewQuery_("CREATE DATABASE test2;");
+			it->NewQuery_("CREATE DATABASE test3;");
+			it->NewQuery_("CREATE DATABASE test3;");
+			it->NewQuery_("CREATE DATABASE test4;");
+			it->NewQuery_("DROP DATABASE test2;");
+			it->NewQuery_("DROP DATABASE test3;");
+			it->NewQuery_("DROP DATABASE test4;");
+			
+			// View states and results of queries
+			for(auto it2 = it->get_queries()->begin(); it2 != it->get_queries()->end(); ++it2)
+			{
+				if((*it2)->get_state())
+					std::cout << "\n -- Consulta: " << (*it2)->get_query();
+				else
+					std::cout << "\n -- Error de consulta: " << (*it2)->get_error();
+			}
 		}
+		else
+			std::cout << "\n -- Error en la base: " << it->get_connected_database()->get_error();
+			
+		// Disconnect from the database
+		it->get_connected_database()->Disconnect_();
 	}
 	
 	std::cout << "\n--\n";
