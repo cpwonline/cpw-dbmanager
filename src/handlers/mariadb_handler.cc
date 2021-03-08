@@ -73,9 +73,12 @@ bool MariaDBHandler::Disconnect_()
 {
 	if(get_state())
 	{
-		mysql_close(mMariadb);
+		mysql_close(mMariadb_);
 		set_state(false);
+		return true;
 	}
+	else
+		return false;
 }
 
 bool MariaDBHandler::Query_(Query* query, Result* result)
