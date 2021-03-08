@@ -59,13 +59,14 @@ target_link_libraries(
 	${PROJECT_NAME} PUBLIC
 	connection
 	database
-	mariadbhandler
-	mysqlhandler
-	sqlite3handler
 	accessdata
 	address
 	query
 	result
+	# Handlers
+	mariadbhandler
+	mysqlhandler
+	sqlite3handler
 )
 install(FILES "${HEADER}/cpw_dbmanager.h" DESTINATION include)
 install(TARGETS ${PROJECT_NAME} DESTINATION lib)
