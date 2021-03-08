@@ -33,9 +33,13 @@ class SQLite3Handler : public Database
 		SQLite3Handler();
 		virtual ~SQLite3Handler();
 	
-		void Connect_(AccessData* access_data, Address* address);
-		void Disconnect_();
+		bool Connect_(AccessData* access_data, Address* address);
+		bool Disconnect_();
+		bool Query_(Query* query, Result* result);
 	
+	protected:
+		bool Init_();
+		
 	private:
 		/* add your private declarations */
 };

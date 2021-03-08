@@ -36,12 +36,22 @@ SQLite3Handler::~SQLite3Handler()
 	
 }
 
-void SQLite3Handler::Connect_(AccessData* access_data, Address* address)
+bool SQLite3Handler::Connect_(AccessData* access_data, Address* address)
 {
-	
+	return true;
 }
 
-void SQLite3Handler::Disconnect_()
+bool SQLite3Handler::Init_()
 {
-	
+	return true;
+}
+
+bool SQLite3Handler::Disconnect_()
+{
+	return true;
+}
+
+bool SQLite3Handler::Query_(Query* query, Result* result)
+{
+	return true;
 }

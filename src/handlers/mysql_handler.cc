@@ -36,12 +36,22 @@ MySQLHandler::~MySQLHandler()
 	
 }
 
-void MySQLHandler::Connect_(AccessData* access_data, Address* address)
+bool MySQLHandler::Connect_(AccessData* access_data, Address* address)
 {
-	
+	return true;
 }
 
-void MySQLHandler::Disconnect_()
+bool MySQLHandler::Init_()
 {
-	
+	return true;
+}
+
+bool MySQLHandler::Disconnect_()
+{
+	return true;
+}
+
+bool MySQLHandler::Query_(Query* query, Result* result)
+{
+	return true;
 }
