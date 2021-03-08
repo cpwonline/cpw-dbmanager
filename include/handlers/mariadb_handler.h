@@ -34,11 +34,15 @@ class MariaDBHandler : public Database
 		MariaDBHandler();
 		virtual ~MariaDBHandler();
 		
-		void Connect_(AccessData* access_data, Address* address);
-		void Disconnect_();
+		bool Connect_(AccessData* access_data, Address* address);
+		bool Disconnect_();
+		bool Query_(Query* query, Result* result);
+		
+	protected:
+		bool Init_();
 	
 	private:
-		MYSQL* mMariadb;
+		MYSQL* mMariadb_;
 };
 
 #endif /* MARIADB_HANDLER_H */ 

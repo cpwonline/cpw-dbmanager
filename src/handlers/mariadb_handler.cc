@@ -27,14 +27,7 @@
 
 MariaDBHandler::MariaDBHandler()
 {
-	set_state(true);
-	mMariadb = mysql_init(NULL);
-	if(mMariadb == NULL)
-	{
-		set_error((std::string)mysql_error(mMariadb));
-		set_state(false);
-		Disconnect_();
-	}
+	Init_();
 }
 
 
@@ -43,19 +36,70 @@ MariaDBHandler::~MariaDBHandler()
 	
 }
 
-void MariaDBHandler::Connect_(AccessData* access_data, Address* address)
+bool MariaDBHandler::Init_()
 {
+	mMariadb = mysql_init(NULL);
+	set_state(true);
+	if(mMariadb == NULL)
+	{
+		set_error((std::string)mysql_error(mMariadb));
+		Disconnect_();
+	}
+}
+
+bool MariaDBHandler::Connect_(AccessData* access_data, Address* address)
+{
+	if(mMariadb == NULL)
+	{
+		set_error((std::string)mysql_error(mMariadb));
+		Disconnect_();
+		return false;
+	}
 	if(mysql_real_connect(mMariadb, address->get_internet_address().c_str(), access_data->get_username().c_str(), access_data->get_password().c_str(), NULL, 0 , NULL, 0) == NULL)
 	{
 		set_error((std::string)mysql_error(mMariadb));
-		set_state(false);
 		Disconnect_();
+		return false;
 	}
 	else
+	{
 		set_state(true);
+		return true;
+	}
 }
 
-void MariaDBHandler::Disconnect_()
+bool MariaDBHandler::Disconnect_()
 {
-	mysql_close(mMariadb);
+	if(get_state())
+	{
+		mysql_close(mMariadb);
+		set_state(false);
+	}
+}
+
+bool MariaDBHandler::Query_(Query* query, Result* result)
+{
+	if(mMariadb == NULL)
+	{
+		set_error((std::string)mysql_error(mMariadb));
+		Disconnect_();
+		return false;
+	}
+	if(!query->get_state())
+	{
+		Disconnect_();
+		return false;
+	}
+	if(mysql_query(mMariadb, "SHOW DATABASES;"))
+	{
+		query->set_state(false);
+		set_error((std::string)mysql_error(mMariadb));
+		Disconnect_();
+		return false;
+	}
+	else
+	{
+		set_state(true);
+		return true;
+	}
 }
