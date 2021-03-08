@@ -51,7 +51,7 @@ class Connection
 		
 	public:
 		void Init_();
-		void NewQuery(std::string query);
+		void NewQuery_(std::string query);
 	
 	private:
 		Database* connected_database_;
