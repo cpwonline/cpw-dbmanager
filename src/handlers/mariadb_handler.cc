@@ -38,12 +38,12 @@ MariaDBHandler::~MariaDBHandler()
 
 bool MariaDBHandler::Init_()
 {
-	mMariadb = mysql_init(NULL);
-	set_state(true);
-	if(mMariadb == NULL)
+	mMariadb_ = mysql_init(NULL);
+	if(mMariadb_ == NULL)
 	{
-		set_error((std::string)mysql_error(mMariadb));
-		Disconnect_();
+		set_state(false);
+		set_error((std::string)mysql_error(mMariadb_));
+		return false;
 	}
 }
 
