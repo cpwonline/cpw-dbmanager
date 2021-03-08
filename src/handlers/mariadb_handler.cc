@@ -49,15 +49,16 @@ bool MariaDBHandler::Init_()
 
 bool MariaDBHandler::Connect_(AccessData* access_data, Address* address)
 {
-	if(mMariadb == NULL)
+	if(mMariadb_ == NULL)
 	{
-		set_error((std::string)mysql_error(mMariadb));
-		Disconnect_();
+		set_state(false);
+		set_error((std::string)mysql_error(mMariadb_));
 		return false;
 	}
-	if(mysql_real_connect(mMariadb, address->get_internet_address().c_str(), access_data->get_username().c_str(), access_data->get_password().c_str(), NULL, 0 , NULL, 0) == NULL)
+	if(mysql_real_connect(mMariadb_, address->get_internet_address().c_str(), access_data->get_username().c_str(), access_data->get_password().c_str(), NULL, 0 , NULL, 0) == NULL)
 	{
-		set_error((std::string)mysql_error(mMariadb));
+		set_state(false);
+		set_error((std::string)mysql_error(mMariadb_));
 		Disconnect_();
 		return false;
 	}
