@@ -21,6 +21,11 @@
  * 
  */
 
+#include <string>
+#include <list>
+
+#include "column.h"
+#include "row.h"
 
 #ifndef TABLE_H
 #define TABLE_H
@@ -30,9 +35,15 @@ class Table
 	public:
 		Table();
 		virtual ~Table();
+		
+	public:
+		std::string get_name() const;
+		std::list<Column*>* get_columns() const;
+		void set_name(std::string name);
 	
 	private:
-		/* add your private declarations */
+		std::string name_;
+		std::list<Column*>* columns_;
 };
 
 #endif /* TABLE_H */ 

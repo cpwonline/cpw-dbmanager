@@ -27,12 +27,28 @@
 
 Table::Table()
 {
-	
+	columns_ = new std::list<Column*>;
 }
 
 
 Table::~Table()
 {
-	
+	for(auto it = columns_->begin(); it != columns_->end(); ++it)
+		delete (*it);
+	delete columns_;
 }
 
+std::string Table::get_name() const
+{
+	return name_;
+}
+
+std::list<Column*>* Table::get_columns() const
+{
+	return columns_;
+}
+
+void Table::set_name(std::string name)
+{
+	name_ = name;
+}
