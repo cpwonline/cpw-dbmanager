@@ -27,12 +27,16 @@
 
 Column::Column()
 {
-	
+	row_ = new Row();
 }
 
 
 Column::~Column()
 {
-	
+	delete row_;
 }
 
+Row* Column::get_row() const
+{
+	return row_;
+}

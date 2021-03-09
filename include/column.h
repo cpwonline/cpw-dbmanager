@@ -22,6 +22,8 @@
  */
 
 
+#include "row.h"
+
 #ifndef COLUMN_H
 #define COLUMN_H
 
@@ -31,8 +33,11 @@ class Column
 		Column();
 		virtual ~Column();
 	
+	public:
+		Row* get_row() const;
+	
 	private:
-		/* add your private declarations */
+		Row* row_;
 };
 
 #endif /* COLUMN_H */ 
