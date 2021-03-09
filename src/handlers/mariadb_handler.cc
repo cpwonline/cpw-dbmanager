@@ -38,27 +38,28 @@ MariaDBHandler::~MariaDBHandler()
 
 bool MariaDBHandler::Init_()
 {
-	mMariadb_ = mysql_init(NULL);
-	if(mMariadb_ == NULL)
+	mariadb_object_ = mysql_init(NULL);
+	if(mariadb_object_ == NULL)
 	{
 		set_state(false);
-		set_error((std::string)mysql_error(mMariadb_));
+		set_error((std::string)mysql_error(mariadb_object_));
 		return false;
 	}
+	return true;
 }
 
 bool MariaDBHandler::Connect_(AccessData* access_data, Address* address)
 {
-	if(mMariadb_ == NULL)
+	if(mariadb_object_ == NULL)
 	{
 		set_state(false);
-		set_error((std::string)mysql_error(mMariadb_));
+		set_error((std::string)mysql_error(mariadb_object_));
 		return false;
 	}
-	if(mysql_real_connect(mMariadb_, address->get_internet_address().c_str(), access_data->get_username().c_str(), access_data->get_password().c_str(), NULL, 0 , NULL, 0) == NULL)
+	if(mysql_real_connect(mariadb_object_, address->get_internet_address().c_str(), access_data->get_username().c_str(), access_data->get_password().c_str(), get_name().c_str(), 0 , NULL, 0) == NULL)
 	{
 		set_state(false);
-		set_error((std::string)mysql_error(mMariadb_));
+		set_error((std::string)mysql_error(mariadb_object_));
 		Disconnect_();
 		return false;
 	}
@@ -73,7 +74,7 @@ bool MariaDBHandler::Disconnect_()
 {
 	if(get_state())
 	{
-		mysql_close(mMariadb_);
+		mysql_close(mariadb_object_);
 		set_state(false);
 		return true;
 	}
@@ -81,30 +82,33 @@ bool MariaDBHandler::Disconnect_()
 		return false;
 }
 
-bool MariaDBHandler::Query_(Query* query, Result* result)
+bool MariaDBHandler::Query_(Query* query)
 {
-	if(mMariadb_ == NULL)
+	if(mariadb_object_ == NULL)
 	{
 		set_state(false);
-		set_error((std::string)mysql_error(mMariadb_));
+		set_error((std::string)mysql_error(mariadb_object_));
 		return false;
 	}
 	if(!query->get_state())
 	{
-		set_error("Error on query");
+		set_error("Error on query.");
 		return false;
 	}
-	if(mysql_query(mMariadb_, query->get_query().c_str()))
+	if(mysql_query(mariadb_object_, query->get_query().c_str()))
 	{
 		query->set_state(false);
-		query->set_error((std::string)mysql_error(mMariadb_));
+		query->set_error((std::string)mysql_error(mariadb_object_));
 		return false;
 	}
 	else
 	{
+		query->set_times_used(query->get_times_used() + 1);
 		set_state(true);
 		return true;
 	}
+}
+
 bool MariaDBHandler::LoadData_(Result* result)
 {
 }
