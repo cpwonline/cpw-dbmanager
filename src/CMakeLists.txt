@@ -63,6 +63,9 @@ target_link_libraries(
 	address
 	query
 	result
+	table
+	column
+	row
 	# Handlers
 	mariadbhandler
 	mysqlhandler
