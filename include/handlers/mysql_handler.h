@@ -35,7 +35,8 @@ class MySQLHandler : public Database
 	
 		bool Connect_(AccessData* access_data, Address* address);
 		bool Disconnect_();
-		bool Query_(Query* query, Result* result);
+		bool Query_(Query* query);
+		bool LoadData_(Result* result);
 	
 	protected:
 		bool Init_();

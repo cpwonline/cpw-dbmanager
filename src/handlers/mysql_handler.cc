@@ -51,7 +51,12 @@ bool MySQLHandler::Disconnect_()
 	return true;
 }
 
-bool MySQLHandler::Query_(Query* query, Result* result)
+bool MySQLHandler::Query_(Query* query)
 {
 	return true;
+}
+
+bool MySQLHandler::LoadData_(Result* result)
+{
+	
 }

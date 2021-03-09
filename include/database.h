@@ -22,6 +22,7 @@
  */
 
 #include <string>
+#include <vector>
 
 #include "query.h"
 #include "result.h"
@@ -48,7 +49,8 @@ class Database
 	public:
 		virtual bool Connect_(AccessData* access_data, Address* address) = 0;
 		virtual bool Disconnect_() = 0;
-		virtual bool Query_(Query* query, Result* result) = 0;
+		virtual bool Query_(Query* query) = 0;
+		virtual bool LoadData_(Result* result) = 0;
 		
 	protected:
 		void set_errno(int errno);

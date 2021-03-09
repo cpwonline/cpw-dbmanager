@@ -105,4 +105,6 @@ bool MariaDBHandler::Query_(Query* query, Result* result)
 		set_state(true);
 		return true;
 	}
+bool MariaDBHandler::LoadData_(Result* result)
+{
 }

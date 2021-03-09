@@ -51,7 +51,12 @@ bool SQLite3Handler::Disconnect_()
 	return true;
 }
 
-bool SQLite3Handler::Query_(Query* query, Result* result)
+bool SQLite3Handler::Query_(Query* query)
 {
 	return true;
+}
+
+bool SQLite3Handler::LoadData_(Result* result)
+{
+	
 }

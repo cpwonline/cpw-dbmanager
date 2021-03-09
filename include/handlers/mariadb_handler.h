@@ -21,6 +21,7 @@
  * 
  */
 
+
 #include <mysql.h>
 
 #include "database.h"
@@ -36,13 +37,18 @@ class MariaDBHandler : public Database
 		
 		bool Connect_(AccessData* access_data, Address* address);
 		bool Disconnect_();
-		bool Query_(Query* query, Result* result);
+		bool Query_(Query* query);
+		bool LoadData_(Result* result);
 		
 	protected:
 		bool Init_();
 	
 	private:
-		MYSQL* mMariadb_;
+		MYSQL* mariadb_object_;
+		MYSQL_RES* mariadb_results_;
+		MYSQL_ROW mariadb_row_;
+		MYSQL_FIELD* mariadb_field_;
+		int num_fields_;
 };
 
 #endif /* MARIADB_HANDLER_H */ 
