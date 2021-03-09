@@ -22,6 +22,8 @@
  */
 
 
+#include "table.h"
+
 #ifndef RESULT_H
 #define RESULT_H
 
@@ -30,9 +32,15 @@ class Result
 	public:
 		Result();
 		virtual ~Result();
+		
+	public:
+		bool get_state() const;
+		Table* get_results_table() const;
+		void set_state(bool state);
 	
 	private:
-		/* add your private declarations */
+		bool state_;
+		Table* results_table_;
 };
 
 #endif /* RESULT_H */ 

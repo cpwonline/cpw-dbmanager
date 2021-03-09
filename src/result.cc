@@ -27,12 +27,26 @@
 
 Result::Result()
 {
-	
+	results_table_ = new Table();
+	results_table_->set_name("results");
 }
-
 
 Result::~Result()
 {
-	
+	delete results_table_;
 }
 
+bool Result::get_state() const
+{
+	return state_;
+}
+
+Table* Result::get_results_table() const
+{
+	return results_table_;
+}
+
+void Result::set_state(bool state)
+{
+	state_ = state;
+}
