@@ -91,5 +91,7 @@ void Connection::NewQuery_(std::string query, bool load_data)
 	results_->push_back(new Result());
 	queries_results_->emplace(queries_->back(), results_->back());
 	queries_->back()->set_query(query);
-	connected_database_->Query_(queries_->back(), results_->back());
+	connected_database_->Query_(queries_->back());
+	if(load_data)
+		connected_database_->LoadData_(results_->back());
 }
