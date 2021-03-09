@@ -40,6 +40,10 @@ class Table
 		std::string get_name() const;
 		std::list<Column*>* get_columns() const;
 		void set_name(std::string name);
+		
+	public:
+		Column* FirstColumn_() const;
+		Column* LastColumn_() const;
 	
 	private:
 		std::string name_;

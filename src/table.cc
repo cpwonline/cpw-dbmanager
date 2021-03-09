@@ -52,3 +52,13 @@ void Table::set_name(std::string name)
 {
 	name_ = name;
 }
+
+Column* Table::FirstColumn_() const
+{
+	return columns_->front();
+}
+
+Column* Table::LastColumn_() const
+{
+	return columns_->back();
+}
