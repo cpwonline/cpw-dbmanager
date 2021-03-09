@@ -75,6 +75,11 @@ void CPWDBManager::CreateConnection_(TypeDB type, std::string internet_address, 
 	CompleteAccessData_(username, password);
 }
 
+Connection* CPWDBManager::LastConnection_() const
+{
+	return connections_collector_->back();
+}
+
 void CPWDBManager::CompleteMainSettings_(std::string database_name)
 {
 	connections_collector_->push_back(new Connection(databases_collector_->back()));

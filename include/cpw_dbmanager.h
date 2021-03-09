@@ -54,6 +54,7 @@ class CPWDBManager
 		
 	public:
 		void CreateConnection_(TypeDB type, std::string internet_address, std::string port, std::string database_name, std::string username, std::string password);
+		Connection* LastConnection_() const;
 		
 	protected:
 		void CompleteMainSettings_(std::string database_name);
