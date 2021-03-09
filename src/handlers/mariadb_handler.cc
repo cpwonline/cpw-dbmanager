@@ -111,4 +111,30 @@ bool MariaDBHandler::Query_(Query* query)
 
 bool MariaDBHandler::LoadData_(Result* result)
 {
+	mariadb_results_ = mysql_store_result(mariadb_object_);
+	if(mariadb_results_ == NULL)
+	{
+		set_state(false);
+		set_error("No results.");
+		return false;
+	}
+	
+	num_fields_ = mysql_num_fields(mariadb_results_);
+	
+	std::vector<std::string> fields;
+	while((mariadb_field_ = mysql_fetch_field(mariadb_results_)))
+		fields.push_back(mariadb_field_->name);
+		
+	while((mariadb_row_ = mysql_fetch_row(mariadb_results_)))
+	{
+		result->get_results_table()->get_columns()->push_back(new Column());
+		
+		auto row = result->get_results_table()->get_columns()->back()->get_row()->get_values();
+		for(int a = 0; a < num_fields_; a++)
+		{
+			row->emplace(fields[a], mariadb_row_[a]);
+		}
+	}
+	mysql_free_result(mariadb_results_);
+	return true;
 }
