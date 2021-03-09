@@ -176,6 +176,55 @@ TEST_F(TestGen, ViewResults)
 	std::cout << "\n-\n";
 }
 
+TEST_F(TestGen, HandleOnlyResult)
+{
+	std::cout << "\n- HandleOnlyResult";
+	
+	// Create the connection
+	TestObj_->CreateConnection_(CPWDBManager::TypeDB::MariaDB, "localhost", "3033", "test", "root", "26552160jfrc");
+	
+	// See the last connection
+	auto it = TestObj_->LastConnection_(); 
+	if(it != nullptr)
+	{
+		// Init the database connection
+		it->Init_();
+		
+		// View the database connection
+		if(it->get_connected_database()->get_state())
+		{
+			// Insert queries
+			it->NewQuery_("SELECT marca, date_freg FROM carros where id='3';", true);
+			
+			// View states and results of queries
+			int a = 0;
+			for(auto it2 = it->get_queries_results()->begin(); it2 != it->get_queries_results()->end(); ++it2)
+			{
+				std::cout << "\n-- " << ++a;
+				if(it2->first->get_state())
+				{
+					std::cout << "\n--- Consulta: " << it2->first->get_query();
+					std::cout << "\n--- Veces usada: " << it2->first->get_times_used();
+					std::cout << "\n--- Resultados: ";
+					
+					auto val = it2->second->get_results_table()->FirstColumn_()->get_row()->get_values();
+					std::cout << "\n----- value: " << val->at("marca") << ", date_freg: " << val->at("date_freg");
+				}
+				else
+					std::cout << "\n --- Error de consulta: " << it2->first->get_error();
+				a++;
+			}
+		}
+		else
+			std::cout << "\n -- Error en la base: " << it->get_connected_database()->get_error();
+			
+		// Disconnect from the database
+		it->get_connected_database()->Disconnect_();
+	}
+	
+	std::cout << "\n-\n";
+}
+
 //-----------------------------------------------------------------------------
 
 int main(int argc, char* argv[])
