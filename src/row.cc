@@ -27,12 +27,16 @@
 
 Row::Row()
 {
-	
+	values_ = new std::map<std::string, std::string>;
 }
 
 
 Row::~Row()
 {
-	
+	delete values_;
 }
 
+std::map<std::string, std::string>* Row::get_values() const
+{
+	return values_;
+}

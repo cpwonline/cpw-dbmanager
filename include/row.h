@@ -22,6 +22,9 @@
  */
 
 
+#include <string>
+#include <map>
+
 #ifndef ROW_H
 #define ROW_H
 
@@ -31,8 +34,11 @@ class Row
 		Row();
 		virtual ~Row();
 	
+	public:
+		std::map<std::string, std::string>* get_values() const;
+	
 	private:
-		/* add your private declarations */
+		std::map<std::string, std::string>* values_;
 };
 
 #endif /* ROW_H */ 
