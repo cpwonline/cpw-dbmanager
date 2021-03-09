@@ -6,8 +6,8 @@ project("cpw-dbmanager" LANGUAGES CXX)
 
 ## Version
 set(${PROJECT_NAME}_VERSION_MAYOR 0)
-set(${PROJECT_NAME}_VERSION_MINOR 0)
-set(${PROJECT_NAME}_VERSION_PATCH 1)
+set(${PROJECT_NAME}_VERSION_MINOR 1)
+set(${PROJECT_NAME}_VERSION_PATCH 11)
 set(${PROJECT_NAME}_VERSION_SUFFIX "-Alpha")
 
 ## Put other variables
