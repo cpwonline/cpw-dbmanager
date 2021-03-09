@@ -95,3 +95,13 @@ void Connection::NewQuery_(std::string query, bool load_data)
 	if(load_data)
 		connected_database_->LoadData_(results_->back());
 }
+
+Query* Connection::LastQuery_() const
+{
+	return queries_->back();
+}
+
+Result* Connection::LastResult_() const
+{
+	return results_->back();
+}
