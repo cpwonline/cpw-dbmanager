@@ -85,7 +85,7 @@ void Connection::Init_()
 	connected_database_->Connect_(current_access_data_, current_address_);
 }
 
-void Connection::NewQuery_(std::string query)
+void Connection::NewQuery_(std::string query, bool load_data)
 {
 	queries_->push_back(new Query());
 	results_->push_back(new Result());
