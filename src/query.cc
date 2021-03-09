@@ -26,7 +26,8 @@
 
 
 Query::Query() :
-	state_(true)
+	state_(true),
+	times_used_(0)
 {
 	
 }
