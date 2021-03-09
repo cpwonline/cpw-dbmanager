@@ -88,6 +88,7 @@ TEST_F(TestGen, TestQuery)
 			it->NewQuery_("CREATE DATABASE test3;");
 			it->NewQuery_("CREATE DATABASE test3;");
 			it->NewQuery_("CREATE DATABASE test4;");
+			it->NewQuery_("CREAT DATABASE test4;");
 			it->NewQuery_("DROP DATABASE test2;");
 			it->NewQuery_("DROP DATABASE test3;");
 			it->NewQuery_("DROP DATABASE test4;");
@@ -96,9 +97,67 @@ TEST_F(TestGen, TestQuery)
 			for(auto it2 = it->get_queries()->begin(); it2 != it->get_queries()->end(); ++it2)
 			{
 				if((*it2)->get_state())
+				{
 					std::cout << "\n -- Consulta: " << (*it2)->get_query();
+					std::cout << "\n -- Veces usada: " << (*it2)->get_times_used();
+				}
 				else
 					std::cout << "\n -- Error de consulta: " << (*it2)->get_error();
+			}
+		}
+		else
+			std::cout << "\n -- Error en la base: " << it->get_connected_database()->get_error();
+			
+		// Disconnect from the database
+		it->get_connected_database()->Disconnect_();
+	}
+	
+	std::cout << "\n--\n";
+}
+
+TEST_F(TestGen, ViewResults)
+{
+	std::cout << "\n-- ViewResults";
+	
+	// Create the connection
+	TestObj_->CreateConnection_(CPWDBManager::TypeDB::MariaDB, "localhost", "3033", "test", "root", "26552160jfrc");
+	
+	// See the last connection
+	auto it = TestObj_->get_connections_collector()->back(); 
+	if(it != nullptr)
+	{
+		// Init the database connection
+		it->Init_();
+		
+		// View the database connection
+		if(it->get_connected_database()->get_state())
+		{
+			// Insert queries
+			it->NewQuery_("SELECT * FROM table1;", true);
+			it->NewQuery_("SELECT * FROM carros;", true);
+			it->NewQuery_("SELECT * FROM carro;", true);
+			
+			// View states and results of queries
+			for(auto it2 = it->get_queries_results()->begin(); it2 != it->get_queries_results()->end(); ++it2)
+			{
+				if(it2->first->get_state())
+				{
+					std::cout << "\n -- Consulta: " << it2->first->get_query();
+					std::cout << "\n -- Veces usada: " << it2->first->get_times_used();
+					std::cout << "\n -- Resultados: ";
+					
+					auto results = it2->second->get_results_table()->get_columns();
+					int a = 0;
+					for(auto col = results->begin(); col != results->end(); ++col)
+					{
+						std::cout << "\n" << a << ". Columna";
+						for(auto value = (*col)->get_row()->get_values()->begin(); value != (*col)->get_row()->get_values()->end(); ++value)
+							std::cout << "\n---- Key: " << value->first << ", value: " << value->second;
+						a++;
+					}
+				}
+				else
+					std::cout << "\n -- Error de consulta: " << it2->first->get_error();
 			}
 		}
 		else
