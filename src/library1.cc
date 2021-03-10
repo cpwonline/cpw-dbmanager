@@ -1,5 +1,5 @@
 /*
- * main.cc
+ * library1.cc
  * 
  * Copyright 2021 Jose Felix Rivas Carrasco <josefelixrc@outlook.com>
  * 
@@ -22,18 +22,45 @@
  */
 
 
-#include <iostream>
-
 #include "library1.h"
-#include "library2.h"
-#include "project-nameConfig.h"
 
-int main(int argc, char** argv)
+Library1::Library1(int argc, char** argv)
 {
-	Library1 obj1(argc, argv);
-	Library2 obj2;
+	auto app = Gtk::Application::create(argc, argv, "org.gtkmm.examples.base");
+	auto refBuilder = Gtk::Builder::create();
+	try
+	{
+		refBuilder->add_from_file(DATADIR"project.glade");
+	}
+	catch(const Glib::FileError& exp)
+	{
+		std::cerr << "FileError: " << exp.what() << std::endl;
+	}
+	catch(const Glib::MarkupError& exp)
+	{
+		std::cerr << "MarkupError: " << exp.what() << std::endl;
+	}
+	catch(const Gtk::BuilderError& exp)
+	{
+		std::cerr << "BuilderError: " << exp.what() << std::endl;
+	}
 	
-	std::cout << "\nThis hello on library2: " << obj2.get_var1();
+	Gtk::Dialog* mDialog = nullptr;
+	Gtk::Button* mButton = nullptr;
 	
-	return 0;
+	refBuilder->get_widget("DialogBasic", mDialog);
+	if(mDialog)
+	{
+		refBuilder->get_widget("QuitButton", mButton);
+		app->run(*mDialog);
+	}
+	
+	ObjectLibrary obj1;
+	obj1.SayHello_();
 }
+
+Library1::~Library1()
+{
+	
+}
+

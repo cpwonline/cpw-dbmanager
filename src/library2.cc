@@ -1,5 +1,5 @@
 /*
- * main.cc
+ * library2.cc
  * 
  * Copyright 2021 Jose Felix Rivas Carrasco <josefelixrc@outlook.com>
  * 
@@ -22,18 +22,21 @@
  */
 
 
-#include <iostream>
-
-#include "library1.h"
 #include "library2.h"
-#include "project-nameConfig.h"
 
-int main(int argc, char** argv)
+
+Library2::Library2()
 {
-	Library1 obj1(argc, argv);
-	Library2 obj2;
+	ObjectLibrary obj1;
+	var1_ = obj1.SayHello_();
+}
+
+Library2::~Library2()
+{
 	
-	std::cout << "\nThis hello on library2: " << obj2.get_var1();
-	
-	return 0;
+}
+
+std::string Library2::get_var1() const
+{
+	return var1_;
 }

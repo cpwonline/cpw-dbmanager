@@ -1,5 +1,5 @@
 /*
- * access_data.h
+ * object_library.h
  * 
  * Copyright 2021 Jose Felix Rivas Carrasco <josefelixrc@outlook.com>
  * 
@@ -21,26 +21,22 @@
  * 
  */
 
-
+#include <iostream>
 #include <string>
 
-#ifndef ACCESS_DATA_H
-#define ACCESS_DATA_H
+#ifndef OBJECT_LIBRARY_H
+#define OBJECT_LIBRARY_H
 
-class AccessData
+class ObjectLibrary
 {
 	public:
-		AccessData();
-		virtual ~AccessData();
+		ObjectLibrary();
+		virtual ~ObjectLibrary();
 		
-	public:
-		std::string get_username() const;
-		std::string get_password() const;
-		void set_username(std::string username);
-		void set_password(std::string password);
+		std::string SayHello_();
 	
 	private:
-		std::string username_, password_;
+		/* add your private declarations */
 };
 
-#endif /* ACCESS_DATA_H */ 
+#endif /* OBJECT_LIBRARY_H */ 

@@ -1,5 +1,5 @@
 /*
- * main.cc
+ * library1.h
  * 
  * Copyright 2021 Jose Felix Rivas Carrasco <josefelixrc@outlook.com>
  * 
@@ -22,18 +22,22 @@
  */
 
 
-#include <iostream>
+#include <gtkmm.h>
 
-#include "library1.h"
-#include "library2.h"
 #include "project-nameConfig.h"
+#include "object_library.h"
 
-int main(int argc, char** argv)
+#ifndef LIBRARY1_H
+#define LIBRARY1_H
+
+class Library1
 {
-	Library1 obj1(argc, argv);
-	Library2 obj2;
+	public:
+		Library1(int argc, char** argv);
+		virtual ~Library1();
 	
-	std::cout << "\nThis hello on library2: " << obj2.get_var1();
-	
-	return 0;
-}
+	private:
+		/* add your private declarations */
+};
+
+#endif /* LIBRARY1_H */ 

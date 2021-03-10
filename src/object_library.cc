@@ -1,5 +1,5 @@
 /*
- * main.cc
+ * objectlibrary.cc
  * 
  * Copyright 2021 Jose Felix Rivas Carrasco <josefelixrc@outlook.com>
  * 
@@ -22,18 +22,21 @@
  */
 
 
-#include <iostream>
+#include "object_library.h"
 
-#include "library1.h"
-#include "library2.h"
-#include "project-nameConfig.h"
 
-int main(int argc, char** argv)
+ObjectLibrary::ObjectLibrary()
 {
-	Library1 obj1(argc, argv);
-	Library2 obj2;
 	
-	std::cout << "\nThis hello on library2: " << obj2.get_var1();
+}
+
+ObjectLibrary::~ObjectLibrary()
+{
 	
-	return 0;
+}
+
+std::string ObjectLibrary::SayHello_()
+{
+	std::cout << "\nHello!\n";
+	return "Hello!";
 }

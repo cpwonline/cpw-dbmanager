@@ -1,5 +1,5 @@
 /*
- * access_data.cc
+ * library2.h
  * 
  * Copyright 2021 Jose Felix Rivas Carrasco <josefelixrc@outlook.com>
  * 
@@ -22,36 +22,23 @@
  */
 
 
-#include "access_data.h"
+#include <string>
 
+#include "object_library.h"
 
-AccessData::AccessData()
+#ifndef LIBRARY2_H
+#define LIBRARY2_H
+
+class Library2
 {
+	public:
+		Library2();
+		virtual ~Library2();
+		
+		std::string get_var1() const;
 	
-}
+	private:
+		std::string var1_;
+};
 
-
-AccessData::~AccessData()
-{
-	
-}
-
-std::string AccessData::get_username() const
-{
-	return username_;
-}
-
-std::string AccessData::get_password() const
-{
-	return password_;
-}
-
-void AccessData::set_username(std::string username)
-{
-	username_ = username;
-}
-
-void AccessData::set_password(std::string password)
-{
-	password_ = password;
-}
+#endif /* LIBRARY2_H */ 
