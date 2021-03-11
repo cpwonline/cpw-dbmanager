@@ -30,7 +30,7 @@ Library1::Library1(int argc, char** argv)
 	auto refBuilder = Gtk::Builder::create();
 	try
 	{
-		refBuilder->add_from_file(DATADIR"project.glade");
+		refBuilder->add_from_file(DATADIR PROJECT_NAME ".glade");
 	}
 	catch(const Glib::FileError& exp)
 	{
