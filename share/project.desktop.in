@@ -1,0 +1,25 @@
+[Desktop Entry]
+Name=@PROJECT_FULL_NAME@
+Type=Application
+Exec=@PROJECT_NAME@
+Terminal=false
+Icon=@CMAKE_INSTALL_DATADIR@/@PROJECT_NAME@/@PROJECT_NAME@.svg
+Comment=Comments
+NoDisplay=false
+Categories=
+
+# Some categories:
+#
+# AudioVideo 
+# Audio
+# Video
+# Development
+# Education 
+# Game
+# Graphics 
+# Network
+# Office 
+# Science
+# Settings
+# System 
+# Utility
