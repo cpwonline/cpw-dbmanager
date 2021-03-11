@@ -12,6 +12,7 @@
 ~*
 *.cbp
 *.anjuta
+*.geany
 *.db
 *.swp
 *.tags
