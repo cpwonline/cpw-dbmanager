@@ -2,10 +2,10 @@
 #define CONFIG_H
 
 /* Name of package */
-#define PACKAGE "${PROJECT_NAME}"
+#define PROJECT_NAME "${PROJECT_NAME}"
 
 /* Full name of this package */
-#define PACKAGE_NAME "${PROJECT_FULL_NAME}"
+#define PROJECT_FULL_NAME "${PROJECT_FULL_NAME}"
 
 /* Version */
 #define PACKAGE_VERSION_MAYOR = "${${PROJECT_NAME}_VERSION_MAYOR}"
@@ -14,6 +14,6 @@
 #define PACKAGE_VERSION_SUFFIX = "${${PROJECT_NAME}_VERSION_SUFFIX}"
 
 /* Base data directory */
-#define PACKAGE_DATADIR "${CMAKE_INSTALL_PREFIX}/share"
+#define DATADIR "${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/"
 
 #endif /* CONFIG_H */ 
