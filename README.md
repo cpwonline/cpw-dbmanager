@@ -1,41 +1,37 @@
-# [Nombre del proyecto]
+# PROJECT NAME
 
-## Introducción
 ## Introduction
-	// Breve introducción hablar de la empresa
-	// Se puede añadir un poco del equipo de trabajo
 
-## Acerca de este software
+Developed, designed and made by the **Software Developers Team** of CPW Online | [CPW Online website](https://cpwonline.org)
+
+Hello! Thank you for using this software, developed with a lot of effort and affection for the Free Software community.
+
 ## About this software
-	// Información básica del proyecto
-	// Se pueden añadir imágenes que estén hospedadas
 
-## Características
 ## Features
 
-## Requerimientos
 ## Requeriments
-	// Dependecias, bibliotecas
-	// plugins o frameworks necesarios 
-	// par queel proyecto funcione
 
-## Instalación
 ## Installation
 
-## Cómo usar este software
 ## How to use this software
 
-## Documentación
 ## Documentation
-	// Información de dónde encontrar la 
-	// documentación detallada
 
-## Donaciones
 ## Donations
-	// Métodos para realizar donaciones
 
-## Contacto
+If you want to help us financially we accept your donations using
+Paypal and performing the following steps:
+
+- 1. Access the following URL from your browser: [PayPal - CPW Online](https://paypal.me/cpwonline)
+- 2. Let yourself go ;)
+
 ## Contact
 
-## Licencia
+- **GitHub**: [@cpwonline](https://www.github.com/cpwonline)
+- **Web**: [CPW Online](https://www.cpwonline.org)
+- **Email**: [CPW Online](mailto:support@cpwonline.org)
+
 ## License
+
+This project is under licence [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0-standalone.html) - see file [LICENSE](LICENSE) for more details
