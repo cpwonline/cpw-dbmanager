@@ -13,13 +13,13 @@ Ex:
 
 1. If you "Added a/changed the function to do X", explain why:
 
-    * it is necessary to have a way to do X.
-    * if there already exists a way, why is your implementation better
+	* it is necessary to have a way to do X.
+	* if there already exists a way, why is your implementation better
 
 2. If you "Fixed bug/error in X", explain:
 
-    * what was the bug/error (if you already made an issue, please link to it here)
-    * how does your implementation fix the issue
+	* what was the bug/error (if you already made an issue, please link to it here)
+	* how does your implementation fix the issue
 
 ### Code style and formatting
 
@@ -49,17 +49,14 @@ Fixes #XXXX
 Demonstrate the code is solid. Example: The exact commands you ran and their output,
 screenshots / videos if the pull request changes UI.
 
-*Make sure tests pass on all of the [relevant CI workflows](https://github.com/filipdutescu/modern-cpp-template/actions).*
-
 ### Pull Request Readiness Checklist
 
-See details at [CONTRIBUTING.md](https://github.com/filipdutescu/modern-cpp-template/blob/master/CONTRIBUTING.md).
+See details at [CONTRIBUTING.md](CONTRIBUTING.md).
 
-* [ ] I agree to contribute to the project under [INSERT PROJECT NAME] (Unlicense)
-[License](LICENSE).
+* [ ] I agree to contribute to the project under [PROJECT NAME] [License](LICENSE).
 
 * [ ] To the best of my knowledge, the proposed patch is not based on a code under
-GPL or other license that is incompatible with [INSERT PROJECT NAME]
+GPL or other license that is incompatible with [PROJECT NAME]
 
 * [ ] The PR is proposed to proper branch
 
@@ -71,3 +68,4 @@ if applicable
 * [ ] The feature is well documented and sample code can be built with the project
 CMake
 
+[PROJECT NAME]: Your Project Name
