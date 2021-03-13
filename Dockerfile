@@ -6,6 +6,7 @@ RUN apt-get update && apt-get upgrade -y
 RUN echo "- Installing dependencies"
 RUN apt-get install -y \
 	gcc \
+	g++ \
 	ccache \
 	cppcheck \
 	doxygen \
