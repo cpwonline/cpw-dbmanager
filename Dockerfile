@@ -20,7 +20,9 @@ RUN apt-get install -y \
 
 RUN echo "- Building the project"
 RUN git clone https://github.com/cpwonline/modern-cxx-project.git
-RUN cd modern-cxx-project && mkdir build && cd build
-RUN cmake .. && cmake --build . && cmake --build . --target install
+RUN cd modern-cxx-project && \
+	mkdir build && cd build && \
+	cmake .. && cmake --build . && \
+	cmake --build . --target install
 
 CMD /usr/local/bin/project-name
