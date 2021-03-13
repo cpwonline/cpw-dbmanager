@@ -4,7 +4,7 @@ RUN echo "- Updating Debian"
 RUN apt-get update && apt-get upgrade -y
 
 RUN echo "- Installing dependencies"
-RUN apt install -y \
+RUN apt-get install -y \
 	gcc \
 	ccache \
 	cppcheck \
@@ -19,8 +19,8 @@ RUN apt install -y \
 	libmariadb-dev
 
 RUN echo "- Building the project"
-RUN git clone https://github.com/cpwonline/project-name.git
-RUN cd project-name && mkdir build && cd build
+RUN git clone https://github.com/cpwonline/modern-cxx-project.git
+RUN cd modern-cxx-project && mkdir build && cd build
 RUN cmake .. && cmake --build . && cmake --build . --target install
 
 CMD /usr/local/bin/project-name
