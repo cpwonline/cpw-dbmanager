@@ -3,8 +3,8 @@
 ## Project
 cmake_minimum_required(VERSION 3.12)
 project("project-name" LANGUAGES CXX)
-include("cmake/general_options.cmake")
-include("cmake/build_settings.cmake")
+include(cmake/general_options.cmake)
+include(cmake/build_settings.cmake)
 
 ## Version
 set(${PROJECT_NAME}_VERSION_MAYOR 0)
@@ -34,7 +34,7 @@ if(_ENABLE_TESTING)
 	add_subdirectory(tests)
 endif()
 
-include("cmake/doxygen.cmake")
-include("cmake/files_install.cmake")
-include("cmake/print_informations.cmake")
-include("cmake/files_install.cmake")
+include(cmake/doxygen.cmake)
+include(cmake/files_install.cmake)
+include(cmake/print_informations.cmake)
+include(cmake/files_install.cmake)
