@@ -4,6 +4,12 @@ find_package(PkgConfig REQUIRED)
 pkg_search_module(DEPENDENCY1 REQUIRED gtkmm-3.0)
 pkg_search_module(DEPENDENCY2 REQUIRED libmariadb libmysqlclient)
 
+# Find packages
+find_package(Poco)
+if(NOT Poco_FOUND)
+	message(FATAL_ERROR "POCO not found")
+endif()
+
 # Targets
 
 ## Objects libraries
