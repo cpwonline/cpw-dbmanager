@@ -24,16 +24,36 @@
 
 #include <iostream>
 
+ #include "Poco/MD5Engine.h"
+ #include "Poco/DigestStream.h"
+ 
 #include "library1.h"
 #include "library2.h"
 #include "project-nameConfig.h"
 
-int main(int argc, char** argv)
+int main(int argc, char* argv[])
 {
-	Library1 obj1(argc, argv);
+	Library1 obj1;
 	Library2 obj2;
 	
 	std::cout << "\nThis hello on library2: " << obj2.get_var1();
 	
+	// Using POCO:
+	Poco::MD5Engine md5;
+	Poco::DigestOutputStream ds(md5);
+	std::string str = {};
+	if( argc > 1 )
+	{
+		str = argv[1];
+	}
+	else
+	{
+		std::cerr << "\nEnter the word to generate the HASH MD5." << '\n';
+		return 1;
+	}
+	ds << str;
+	ds.close();
+	std::cout << "\n" << Poco::DigestEngine::digestToHex(md5.digest()) << '\n';
+   
 	return 0;
 }
