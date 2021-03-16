@@ -34,4 +34,4 @@ target_link_libraries(library2 ${DEPENDENCY2_LIBRARIES} objectlibrary)
 ## Main executable
 add_executable(${PROJECT_NAME} "main.cc")
 target_include_directories(${PROJECT_NAME} PUBLIC ${HEADER})
-target_link_libraries(${PROJECT_NAME} PUBLIC library1 library2)
+target_link_libraries(${PROJECT_NAME} PUBLIC library1 library2 Poco::Poco)
