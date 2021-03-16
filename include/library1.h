@@ -33,7 +33,7 @@
 class Library1
 {
 	public:
-		Library1(int argc, char** argv);
+		Library1();
 		virtual ~Library1();
 	
 	private:

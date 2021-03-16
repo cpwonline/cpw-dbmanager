@@ -24,9 +24,9 @@
 
 #include "library1.h"
 
-Library1::Library1(int argc, char** argv)
+Library1::Library1()
 {
-	auto app = Gtk::Application::create(argc, argv, "org.gtkmm.examples.base");
+	auto app = Gtk::Application::create("org.gtkmm.examples.base");
 	auto refBuilder = Gtk::Builder::create();
 	try
 	{
