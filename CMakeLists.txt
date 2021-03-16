@@ -5,6 +5,7 @@ cmake_minimum_required(VERSION 3.12)
 project("project-name" LANGUAGES CXX)
 include(cmake/general_options.cmake)
 include(cmake/build_settings.cmake)
+include(cmake/conan.cmake)
 
 ## Version
 set(${PROJECT_NAME}_VERSION_MAYOR 0)
