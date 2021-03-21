@@ -1,18 +1,20 @@
+# Directories
+[Oo]bj/
+[Bb]in/
+[Dd]ebug/
+[Bb]uild/
+[Rr]elease/
+
+# Files
 *.depend
 *.layout
-obj/
-bin/
-Debug/
-debug/
-build/
-Build/
-Release/
 *~
 ~*
 *.cbp
-*.geany
 *.anjuta
+*.geany
 *.db
 *.swp
 *.tags
 *.log
+*.dat

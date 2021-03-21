@@ -71,5 +71,3 @@ target_link_libraries(
 	mysqlhandler
 	sqlite3handler
 )
-install(FILES "${HEADER}/cpw_dbmanager.h" DESTINATION include)
-install(TARGETS ${PROJECT_NAME} DESTINATION lib)
