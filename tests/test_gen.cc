@@ -194,7 +194,7 @@ TEST_F(TestGen, HandleOnlyResult)
 		if(it->get_connected_database()->get_state())
 		{
 			// Insert queries
-			it->NewQuery_("SELECT marca, date_freg FROM carros where id='3';", true);
+			it->NewQuery_("SELECT marca, date_reg FROM carros where id='3';", true);
 			
 			// View states and results of queries
 			int a = 0;
@@ -208,7 +208,7 @@ TEST_F(TestGen, HandleOnlyResult)
 					std::cout << "\n--- Resultados: ";
 					
 					auto val = it2->second->get_results_table()->FirstColumn_()->get_row()->get_values();
-					std::cout << "\n----- value: " << val->at("marca") << ", date_freg: " << val->at("date_freg");
+					std::cout << "\n----- value: " << val->at("marca") << ", date_reg: " << val->at("date_reg");
 				}
 				else
 					std::cout << "\n --- Error de consulta: " << it2->first->get_error();
