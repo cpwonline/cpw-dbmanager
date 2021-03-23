@@ -53,10 +53,8 @@ set_target_properties(accessdata PROPERTIES POSITION_INDEPENDENT_CODE 1)
 ## Shared and statics libraries
 
 ### cpwdbmanager
-add_library(${PROJECT_NAME} SHARED "cpw_dbmanager.cc")
-target_include_directories(${PROJECT_NAME} PUBLIC ${HEADER})
-target_link_libraries(
-	${PROJECT_NAME} PUBLIC
+list(
+	APPEND ${PROJECT_NAME}_libraries
 	connection
 	database
 	accessdata
@@ -66,8 +64,17 @@ target_link_libraries(
 	table
 	column
 	row
-	# Handlers
-	mariadbhandler
-	mysqlhandler
-	sqlite3handler
 )
+if(_BUILD_WITH_MARIADB)
+	set(${PROJECT_NAME}_name ${PROJECT_NAME}-mariadb)
+	list(APPEND ${PROJECT_NAME}_libraries mariadbhandler)
+elseif(_BUILD_WITH_MYSQL)
+	set(${PROJECT_NAME}_name ${PROJECT_NAME}-mysql)
+	list(APPEND ${PROJECT_NAME}_libraries mysqlhandler)
+elseif(_BUILD_WITH_SQLITE3)
+	set(${PROJECT_NAME}_name ${PROJECT_NAME}-sqlite3)
+	list(APPEND ${PROJECT_NAME}_libraries sqlite3handler)
+endif()
+add_library(${PROJECT_NAME}_name SHARED "cpw_dbmanager.cc")
+target_include_directories(${PROJECT_NAME}_name PUBLIC ${HEADER} ${PROJECT_BINARY_DIR})
+target_link_libraries(${PROJECT_NAME}_name PUBLIC ${${PROJECT_NAME}_libraries})
