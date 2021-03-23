@@ -12,6 +12,6 @@
 #define PACKAGE_VERSION_COMPLETE = "${PACKAGE_VERSION_COMPLETE}"
 
 /* Base data directory */
-#define DATADIR "${CMAKE_INSTALL_FULL_DATADIR}/${PROJECT_NAME}/"
+#define DATADIR "${${PROJECT_NAME}_DATADIR}/"
 
 #endif /* CONFIG_H */ 
