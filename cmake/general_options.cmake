@@ -14,6 +14,11 @@ option(_ENABLE_CPPCHECK "Enable cppcheck to verify the sources syntax" OFF)
 option(_VOID_PREFIX "The prefix is null" OFF)
 option(_ENABLE_INSTALL_TO_TMP "The prefix is /tmp" OFF)
 
+## Project options
+option(_BUILD_WITH_MARIADB "Build using MariaDB handlers" 1)
+option(_BUILD_WITH_MYSQL "Build using MySQL handlers" 0)
+option(_BUILD_WITH_SQLITE3 "Build using SQLite3 handlers" 0)
+
 # Handling options
 
 ## Complete
@@ -70,4 +75,19 @@ if(_ENABLE_CPPCHECK)
 	else()
 		message(FATAL_ERROR "CppCheck not found. It can't check sources'")
 	endif()
+endif()
+
+## Project
+if(_BUILD_WITH_MYSQL)
+	set(_BUILD_WITH_MARIADB 0)
+	set(_BUILD_WITH_MYSQL 1)
+	set(_BUILD_WITH_SQLITE3 0)
+elseif(_BUILD_WITH_SQLITE3)
+	set(_BUILD_WITH_MARIADB 0)
+	set(_BUILD_WITH_MYSQL 0)
+	set(_BUILD_WITH_SQLITE3 1)
+elseif(_BUILD_WITH_MARIADB)
+	set(_BUILD_WITH_MARIADB 1)
+	set(_BUILD_WITH_MYSQL 0)
+	set(_BUILD_WITH_SQLITE3 0)
 endif()

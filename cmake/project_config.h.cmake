@@ -14,4 +14,9 @@
 /* Base data directory */
 #define DATADIR "${${PROJECT_NAME}_DATADIR}/"
 
+/* User macros */
+#define BUILD_WITH_MARIADB ${_BUILD_WITH_MARIADB}
+#define BUILD_WITH_MYSQL ${_BUILD_WITH_MYSQL}
+#define BUILD_WITH_SQLITE3 ${_BUILD_WITH_SQLITE3}
+
 #endif /* CONFIG_H */ 
