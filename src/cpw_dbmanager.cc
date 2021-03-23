@@ -50,26 +50,18 @@ std::list<Connection*>* CPWDBManager::get_connections_collector() const
 	return connections_collector_;
 }
 
-void CPWDBManager::CreateConnection_(TypeDB type, std::string internet_address, std::string port, std::string database_name, std::string username, std::string password)
+void CPWDBManager::CreateConnection_(std::string internet_address, std::string port, std::string database_name, std::string username, std::string password)
 {
-	switch(type)
-	{
-		case TypeDB::MariaDB:
-		{
-			databases_collector_->push_back(new MariaDBHandler());
-			break;
-		}
-		case TypeDB::MySQL:
-		{
-			databases_collector_->push_back(new MySQLHandler());
-			break;
-		}
-		case TypeDB::SQLite3:
-		{
-			databases_collector_->push_back(new SQLite3Handler());
-			break;
-		}
-	}
+	#if BUILD_WITH_SQLITE3 == 1
+		databases_collector_->push_back(new SQLite3Handler());
+	#endif
+	#if BUILD_WITH_MARIADB == 1
+		databases_collector_->push_back(new MariaDBHandler());
+	#endif
+	#if BUILD_WITH_MYSQL == 1
+		databases_collector_->push_back(new MySQLHandler());
+	#endif
+	
 	CompleteMainSettings_(database_name);
 	CompleteAddress_(internet_address, port);
 	CompleteAccessData_(username, password);

@@ -25,11 +25,16 @@
 #include <string>
 #include <list>
 
+#include "cpw-dbmanagerConfig.h"
 #include "connection.h"
 #include "database.h"
-#include "handlers/mariadb_handler.h"
-#include "handlers/mysql_handler.h"
-#include "handlers/sqlite3_handler.h"
+#if BUILD_WITH_SQLITE3 == 1
+	#include "handlers/sqlite3_handler.h"
+#elif BUILD_WITH_MARIADB == 1
+	#include "handlers/mariadb_handler.h"
+#elif BUILD_WITH_MYSQL == 1
+	#include "handlers/mysql_handler.h"
+#endif
 
 #ifndef CPW_DBMANAGER_H_
 #define CPW_DBMANAGER_H_
@@ -45,15 +50,7 @@ class CPWDBManager
 		std::list<Connection*>* get_connections_collector() const;
 		
 	public:
-		enum TypeDB
-		{
-			MySQL,
-			MariaDB,
-			SQLite3
-		};
-		
-	public:
-		void CreateConnection_(TypeDB type, std::string internet_address, std::string port, std::string database_name, std::string username, std::string password);
+		void CreateConnection_(std::string internet_address, std::string port, std::string database_name, std::string username, std::string password);
 		Connection* LastConnection_() const;
 		
 	protected:
