@@ -8,4 +8,4 @@ find_package(PkgConfig REQUIRED)
 pkg_search_module(GTEST REQUIRED gtest)
 
 # Add and linking libraries for Executable
-target_link_libraries(test_gen PUBLIC ${GTEST_LIBRARIES} ${PROJECT_NAME})
+target_link_libraries(test_gen PUBLIC ${GTEST_LIBRARIES} ${PROJECT_NAME}_name)

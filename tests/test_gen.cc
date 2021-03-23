@@ -30,7 +30,7 @@ TEST_F(TestGen, ViewData)
 {
 	std::cout << "\n- ViewData";
 	
-	TestObj_->CreateConnection_(CPWDBManager::TypeDB::MariaDB, "localhost", "3033", "test", "root", "26552160jfrc");
+	TestObj_->CreateConnection_("localhost", "3033", "test", "root", "26552160jfrc");
 	
 	int a = 0;
 	for(auto it = TestObj_->get_connections_collector()->begin(); it != TestObj_->get_connections_collector()->end(); ++it)
@@ -50,7 +50,7 @@ TEST_F(TestGen, InitDatabase)
 {
 	std::cout << "\n- InitDatabase";
 	
-	TestObj_->CreateConnection_(CPWDBManager::TypeDB::MariaDB, "localhost", "3033", "test", "root", "26552160jfrc");
+	TestObj_->CreateConnection_("localhost", "3033", "test", "root", "26552160jfrc");
 	auto it = TestObj_->get_connections_collector()->back(); 
 	if(it != nullptr)
 	{
@@ -71,7 +71,7 @@ TEST_F(TestGen, TestQuery)
 	std::cout << "\n- TestQuery";
 	
 	// Create the connection
-	TestObj_->CreateConnection_(CPWDBManager::TypeDB::MariaDB, "localhost", "3033", "test", "root", "26552160jfrc");
+	TestObj_->CreateConnection_("localhost", "3033", "test", "root", "26552160jfrc");
 	
 	// See the last connection
 	auto it = TestObj_->get_connections_collector()->back(); 
@@ -123,7 +123,7 @@ TEST_F(TestGen, ViewResults)
 	std::cout << "\n- ViewResults";
 	
 	// Create the connection
-	TestObj_->CreateConnection_(CPWDBManager::TypeDB::MariaDB, "localhost", "3033", "test", "root", "26552160jfrc");
+	TestObj_->CreateConnection_("localhost", "3033", "test", "root", "26552160jfrc");
 	
 	// See the last connection
 	auto it = TestObj_->get_connections_collector()->back(); 
@@ -181,7 +181,7 @@ TEST_F(TestGen, HandleOnlyResult)
 	std::cout << "\n- HandleOnlyResult";
 	
 	// Create the connection
-	TestObj_->CreateConnection_(CPWDBManager::TypeDB::MariaDB, "localhost", "3033", "test", "root", "26552160jfrc");
+	TestObj_->CreateConnection_("localhost", "3033", "test", "root", "26552160jfrc");
 	
 	// See the last connection
 	auto it = TestObj_->LastConnection_(); 
