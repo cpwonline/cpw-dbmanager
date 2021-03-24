@@ -3,6 +3,7 @@
 ## Header files
 install(
 	FILES 
+		${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.h 
 		${HEADER}/access_data.h
 		${HEADER}/address.h
 		${HEADER}/column.h
@@ -27,7 +28,7 @@ install(
 ## Libraries
 install(
 	TARGETS 
-		${PROJECT_NAME}_name
+		${${PROJECT_NAME}_name}
 	DESTINATION 
 		${CMAKE_INSTALL_LIBDIR}
 )
