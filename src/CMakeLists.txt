@@ -66,13 +66,10 @@ list(
 	row
 )
 if(_BUILD_WITH_MARIADB)
-	set(${PROJECT_NAME}_name ${PROJECT_NAME}-mariadb)
 	list(APPEND ${PROJECT_NAME}_libraries mariadbhandler)
 elseif(_BUILD_WITH_MYSQL)
-	set(${PROJECT_NAME}_name ${PROJECT_NAME}-mysql)
 	list(APPEND ${PROJECT_NAME}_libraries mysqlhandler)
 elseif(_BUILD_WITH_SQLITE3)
-	set(${PROJECT_NAME}_name ${PROJECT_NAME}-sqlite3)
 	list(APPEND ${PROJECT_NAME}_libraries sqlite3handler)
 endif()
 add_library(${PROJECT_NAME}_name SHARED "cpw_dbmanager.cc")
