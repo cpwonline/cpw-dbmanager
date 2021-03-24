@@ -45,6 +45,6 @@ install(
 
 ## Share files
 install(
-	FILES ${PROJECT_BINARY_DIR}/share/${PROJECT_NAME}.pc
+	FILES ${PROJECT_BINARY_DIR}/share/${${PROJECT_NAME}_name}.pc
 	DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
 )
