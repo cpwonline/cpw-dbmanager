@@ -10,6 +10,6 @@ Name: @NAME_PROJECT@
 Description: Description for project
 Version: @PACKAGE_VERSION@
 URL: https://www.cpwonline.org/
-Requires: @_DEPENDENCIES@
-Libs: -L@CMAKE_INSTALL_FULL_LIBDIR@ -l@PROJECT_NAME@
+Requires: ${${PROJECT_NAME}_DEPENDENCIES}
+Libs: -L@CMAKE_INSTALL_FULL_LIBDIR@ -l${${PROJECT_NAME}_name}
 Cflags: -I@CMAKE_INSTALL_FULL_INCLUDEDIR@/@PROJECT_NAME@
