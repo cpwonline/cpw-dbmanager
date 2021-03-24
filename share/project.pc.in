@@ -10,6 +10,6 @@ Name: @NAME_PROJECT@
 Description: Description for project
 Version: @PACKAGE_VERSION@
 URL: https://www.cpwonline.org/
-Requires: mariadb
+Requires: @_DEPENDENCIES@
 Libs: -L@CMAKE_INSTALL_FULL_LIBDIR@ -l@PROJECT_NAME@
 Cflags: -I@CMAKE_INSTALL_FULL_INCLUDEDIR@/@PROJECT_NAME@
